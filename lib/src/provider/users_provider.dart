@@ -125,6 +125,7 @@ Future<Stream?> update(User user, File? image) async {
 
       final res = await http.post(url, headers: headers, body: bodyParams);
       final data = jsonDecode(res.body);
+      
       ResponseApi responseApi = ResponseApi.fromJson(data);
       return responseApi;
     } catch (e) {

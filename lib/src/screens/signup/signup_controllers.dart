@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
-class SignUpControllers {
+class SignUpControllers  {
   BuildContext? context;
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -87,7 +87,7 @@ class SignUpControllers {
         phone: phone,
         password: password,
         roles: []);
-
+    
     Stream? stream = await usersProvider.createWithImage(user, imageFile);
     stream?.listen((res) {
       _progressDialog!.update(value: 50, msg: 'Procesando...');
