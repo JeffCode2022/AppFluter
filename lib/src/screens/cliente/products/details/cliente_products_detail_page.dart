@@ -45,14 +45,13 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
             _imageSlideshow(),
             _textName(),
             _textDesciption(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             _addOrRemoveProduct(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             _standarDelivery(),
             _comentario(),
             const Spacer(),
             _shoppingBag(),
-            
           ],
         ));
   }
@@ -187,7 +186,7 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
   ///--------------BUTTOM SHOPPING BAG-------------------
   Widget _shoppingBag() {
     return Container(
-      margin: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
+      margin: const EdgeInsets.only(left: 90, right: 80, bottom: 60),
       child: ElevatedButton(
           onPressed: _contr.addToBag,
           style: ElevatedButton.styleFrom(
@@ -201,10 +200,10 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  height: 50,
+                  height: 60,
                   alignment: Alignment.center,
                   child: const Text(
-                    'Add to Shopping Bag',
+                    'Add to Bag',
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -216,16 +215,17 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                 alignment: Alignment.centerLeft,
                 child: Container(
                   height: 50,
-                  margin: const EdgeInsets.only(right: 30),
+                  margin: const EdgeInsets.only(right: 40),
                   child: Image.asset(
                     TImages.shoppingBag,
-                    width: 30,
-                    height: 30,
+                    width: 50,
+                    height: 50,
                   ),
                 ),
               )
             ],
-          )),
+          )
+          ),
     );
   }
 
@@ -235,11 +235,11 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
       child: TextFormField(
         controller: _contr.commentController,
         maxLength: 255,
-        maxLines: 5,
+        maxLines: 4,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
           filled: true,
-          fillColor: MyColors.lightRed.withOpacity(0.1),
+          fillColor: MyColors.grey.withOpacity(0.1),
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(Radius.circular(20)),

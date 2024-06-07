@@ -2,6 +2,7 @@ import 'package:delivery_autonoma/common/widgets/appbar/appbar.dart';
 import 'package:delivery_autonoma/src/models/address.dart';
 import 'package:delivery_autonoma/src/widgets/no_data_widget.dart';
 import 'package:delivery_autonoma/utils/constants/colors_delivery.dart';
+import 'package:delivery_autonoma/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -37,7 +38,8 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
       body: Stack(
         children: [
           Positioned(top: 0, child: _textSelectAddress()),
-          Container(margin: const EdgeInsets.only(top: 50), child: _listAddress())
+          Container(
+              margin: const EdgeInsets.only(top: 50), child: _listAddress())
         ],
       ),
       bottomNavigationBar: _buttonAccept(),
@@ -48,12 +50,11 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
     return Column(
       children: [
         Container(
-          padding:
-              const EdgeInsets.only(top: 50, bottom: 50, left: 20, right: 20),
-          alignment: Alignment.center,
-          margin: const EdgeInsets.all(20),
-          child: NoDataWidget(text: 'No tienes ninguna direccion '),
-        ),
+            padding:
+                const EdgeInsets.only(top: 50, bottom: 50, left: 20, right: 20),
+            alignment: Alignment.center,
+            margin: const EdgeInsets.all(20),
+            child: NoDataWidget(text: 'No tienes ninguna direccion ')),
         _buttonNewAddress()
       ],
     );
@@ -74,12 +75,13 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: _contr.createOrder,
         style: ElevatedButton.styleFrom(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             backgroundColor: MyColors.primaryColor),
-        child: const Text('ACEPTAR'),
+        child: const Text('ACEPTAR',
+            style: TextStyle(fontSize: 20, color: Colors.white)),
       ),
     );
   }
@@ -107,65 +109,64 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
   }
 
   Widget _radioSelectAddress(Address address, int index) {
-    return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 20),
+    child: Column(
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                Radio(
-                  value: index,
-                  groupValue: _contr.radioValue,
-                  onChanged: (int? value) {
-                    _contr.handleRadioValueChange(value ?? 0);
-                  },
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      address.address ?? '',
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      address.neighborhood ?? '',
-                      style: const TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    // quiero obtener la referencia de la direccion latitude y longitud para mostrar en la lista  pero  que este en texto asi como la direccion y el distrito
-                    Text(
-                      address.lat.toString(),                      
-                      style: const TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    
-                                        
-                    
-                    
-                  ],
-                ),
-              ],
+            Radio(
+              value: index,
+              groupValue: _contr.radioValue,
+              onChanged: (int? value) {
+                _contr.handleRadioValueChange(value ?? 0);
+              },
             ),
-            Divider(
-              color: Colors.grey[400],
-            )
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    address.address ?? '',
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  Text(
+                    address.neighborhood ?? '',
+                    style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ],
+              ),
+            ),
           ],
-        ));
-  }
+        ),
+        const SizedBox(height: TSizes.spaceBtwInputFields),
+        Divider(
+          color: Colors.grey[400],
+        )
+      ],
+    ),
+  );
+}
 
-  Widget _textSelectAddress() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-      child: const Text(
-        'Elige donde recibir tus compras',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
+ Widget _textSelectAddress() {
+  return Container(
+    alignment: Alignment.centerLeft,
+    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Reducido
+    child: const Text(
+      'Elige donde recibir tus compras',
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Tamaño reducido
+      overflow: TextOverflow.ellipsis,
+      maxLines: 2,
+    ),
+  );
+}
 
   Widget _iconAdd() {
     return IconButton(

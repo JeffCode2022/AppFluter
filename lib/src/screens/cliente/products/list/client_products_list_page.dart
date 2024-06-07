@@ -122,7 +122,7 @@ class _ClienteProductsListPageState extends State<ClienteProductsListPage> {
                 width: 10,
                 height: 10,
                 decoration: const BoxDecoration(
-                    color: Colors.green, shape: BoxShape.circle),
+                    color: Colors.blueGrey, shape: BoxShape.circle),
               ))
         ],
       ),
@@ -170,7 +170,7 @@ class _ClienteProductsListPageState extends State<ClienteProductsListPage> {
     return Drawer(
       child: ListView(padding: EdgeInsets.zero, children: [
         DrawerHeader(
-          decoration: const BoxDecoration(color: MyColors.primaryColor),
+          decoration: const BoxDecoration(gradient: MyColors.warmGrey),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -225,12 +225,12 @@ class _ClienteProductsListPageState extends State<ClienteProductsListPage> {
         ),
         ListTile(
           title: const Text('Editar Perfil'),
-          trailing: const Icon(Iconsax.edit4),
+          trailing: Image.asset(TImages.editPerfil, width: 30, height: 30),
           onTap: _contr.goToUpdate,
         ),
         ListTile(
           title: const Text('Mis Pedidos'),
-          trailing: const Icon(Iconsax.shopping_cart),
+          trailing: Image.asset(TImages.pedidos, width: 30, height: 30),
           onTap: () {},
         ),
         _contr.user != null
@@ -238,13 +238,12 @@ class _ClienteProductsListPageState extends State<ClienteProductsListPage> {
                 ? ListTile(
                     onTap: _contr.goToRoles,
                     title: const Text('Seleccionar Rol'),
-                    trailing: const Icon(Iconsax.user),
-                  )
+                    trailing: Image.asset(TImages.roles, width: 30, height: 30))
                 : Container()
             : Container(),
         ListTile(
           title: const Text('Cerrar Sesión'),
-          trailing: const Icon(Iconsax.logout),
+          trailing: Image.asset(TImages.logout, width: 30, height: 30),
           onTap: _contr.logout,
         ),
       ]),

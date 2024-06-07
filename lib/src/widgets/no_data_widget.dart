@@ -24,7 +24,7 @@ class NoDataWidget extends StatelessWidget {
           ),
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       ),

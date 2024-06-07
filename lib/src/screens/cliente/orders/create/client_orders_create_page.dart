@@ -28,35 +28,37 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(
-        title:  Text('Mi orden', style: TextStyle(color: Colors.white)),
-        showBackArrow: true,
-      ),
-      bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.235,
-        child: Column(
-          children: [
-            Divider(
-              color: Colors.grey[400],
-              endIndent: 30, // DERECHA
-              indent: 30, //IZQUIERDA
-            ),
-            _textTotalPrice(),
-            _buttonNext()
-          ],
+        appBar: const TAppBar(
+          title: Text('Mi orden', style: TextStyle(color: Colors.white)),
+          showBackArrow: true,
         ),
-      ),
-      // ignore: prefer_is_empty
-      body: _con.selectedProducts.length > 0
-          ? ListView(
-              children: _con.selectedProducts.map((Product product) {
-                return _cardProduct(product);
-              }).toList(),
-            )
-          : NoDataWidget(
-              text: 'Ningun producto agregado',
-            ),
-    );
+        bottomNavigationBar: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.235,
+          child: Column(
+            children: [
+              Divider(
+                color: Colors.grey[400],
+                endIndent: 30, // DERECHA
+                indent: 30, //IZQUIERDA
+              ),
+              _textTotalPrice(),
+              _buttonNext()
+            ],
+          ),
+        ),
+        // ignore: prefer_is_empty
+        body: _con.selectedProducts.length > 0
+            ? ListView(
+                children: _con.selectedProducts.map((Product product) {
+                  return _cardProduct(product);
+                }).toList(),
+              )
+            : Container(
+                padding: const EdgeInsets.only(
+                    top: 50, bottom: 50, left: 20, right: 20),
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(20),
+                child: NoDataWidget(text: 'Ningún producto agregado...')));
   }
 
   //----button next
@@ -80,7 +82,7 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
                 child: const Text(
                   'CONTINUAR',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
@@ -89,11 +91,11 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                margin: const EdgeInsets.only(left: 80, top: 9),
+                margin: const EdgeInsets.only(left: 70, top: 9, bottom: 9),
                 height: 30,
-                child: const Icon(
+                child: Icon(
                   Icons.check_circle,
-                  color: Colors.green,
+                  color: Colors.lightGreen[400],
                   size: 30,
                 ),
               ),
@@ -117,7 +119,10 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
             children: [
               Text(
                 product.name ?? '',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 12,
+                    ),overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
               ),
               const SizedBox(height: 10),
               _addOrRemoveItem(product)

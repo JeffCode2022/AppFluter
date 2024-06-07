@@ -57,7 +57,7 @@ class UsersProvider {
       final response = await http.get(url, headers: headers);
 
       if (response.statusCode == 401) {
-        SharedPref().logout(context!,sessionUser!.id!);
+        SharedPref().logout(context!, sessionUser!.id!);
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
       }
       final data = jsonDecode(response.body);
@@ -71,48 +71,77 @@ class UsersProvider {
     }
   }
 
-  ///_-----------------UPDATE------------
-Future<Stream?> update(User user, File? image) async {
-  try {
-    // Construimos la URL de la API
-    Uri url = Uri.http(_url, '$_api/update');
+  Future<List<User>> getDeliveryMen() async {
+    try {
+      Uri url = Uri.http(_url, '$_api/findDeliveryMan');
+      Map<String, String> headers = {
+        'Content-type': 'application/json',
+        'Authorization': sessionUser!.sessionToken!
+      };
+      final res = await http.get(url, headers: headers);
 
-    // Creamos una solicitud multiparte
-    final request = http.MultipartRequest('PUT', url);
+      if (res.statusCode == 401) {
+        // NO AUTORIZADO
+        MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+        SharedPref().logout(context!, sessionUser!.id!);
+      }
 
-    // Agregamos la autorización a los encabezados de la solicitud
-    request.headers['Authorization'] = sessionUser!.sessionToken!;
+      final data = json.decode(res.body);
 
-    // Si se proporcionó una imagen, la agregamos a la solicitud
-    if (image != null) {
-      final fileStream = http.ByteStream(image.openRead().cast());
-      final fileLength = await image.length();
-      final fileName = basename(image.path);
-      request.files.add(http.MultipartFile('image', fileStream, fileLength, filename: fileName));
+      List<User> users = [];
+      for (var user in data) {
+        users.add(User.fromJson(user));
+      }
+      return users;
+    } catch (e) {
+      print('Error: $e');
+      return [];
     }
-
-    // Agregamos los datos del usuario a los campos de la solicitud
-    request.fields['user'] = json.encode(user);
-
-    // Enviamos la solicitud
-    final response = await request.send();
-
-    // Comprobamos si la respuesta es 401 (No autorizado)
-    if (response.statusCode == 401) {
-      // Si la respuesta es 401, cerramos la sesión del usuario y mostramos un mensaje
-      SharedPref().logout(context!, sessionUser!.id!);
-      MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-    }
-
-    // Decodificamos la respuesta y la devolvemos como una transmisión
-    return response.stream.transform(utf8.decoder);
-  } catch (e) {
-    // Si ocurre un error, lo imprimimos en la consola
-    // ignore: avoid_print
-    print('Error: $e');
-    return null;
   }
-}
+
+  ///_-----------------UPDATE------------
+  Future<Stream?> update(User user, File? image) async {
+    try {
+      // Construimos la URL de la API
+      Uri url = Uri.http(_url, '$_api/update');
+
+      // Creamos una solicitud multiparte
+      final request = http.MultipartRequest('PUT', url);
+
+      // Agregamos la autorización a los encabezados de la solicitud
+      request.headers['Authorization'] = sessionUser!.sessionToken!;
+
+      // Si se proporcionó una imagen, la agregamos a la solicitud
+      if (image != null) {
+        final fileStream = http.ByteStream(image.openRead().cast());
+        final fileLength = await image.length();
+        final fileName = basename(image.path);
+        request.files.add(http.MultipartFile('image', fileStream, fileLength,
+            filename: fileName));
+      }
+
+      // Agregamos los datos del usuario a los campos de la solicitud
+      request.fields['user'] = json.encode(user);
+
+      // Enviamos la solicitud
+      final response = await request.send();
+
+      // Comprobamos si la respuesta es 401 (No autorizado)
+      if (response.statusCode == 401) {
+        // Si la respuesta es 401, cerramos la sesión del usuario y mostramos un mensaje
+        SharedPref().logout(context!, sessionUser!.id!);
+        MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+      }
+
+      // Decodificamos la respuesta y la devolvemos como una transmisión
+      return response.stream.transform(utf8.decoder);
+    } catch (e) {
+      // Si ocurre un error, lo imprimimos en la consola
+      // ignore: avoid_print
+      print('Error: $e');
+      return null;
+    }
+  }
 
   ////-------------CREATE------------
 
@@ -125,7 +154,7 @@ Future<Stream?> update(User user, File? image) async {
 
       final res = await http.post(url, headers: headers, body: bodyParams);
       final data = jsonDecode(res.body);
-      
+
       ResponseApi responseApi = ResponseApi.fromJson(data);
       return responseApi;
     } catch (e) {

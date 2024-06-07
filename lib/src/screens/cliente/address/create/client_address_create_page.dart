@@ -112,8 +112,7 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             backgroundColor: MyColors.primaryColor),
-        child: const Text('CREAR DIRECCION',
-            style: TextStyle(color: Colors.white)),
+        child: const Text('CREAR DIRECCION',style: TextStyle(color: Colors.white, fontSize: 20)),
       ),
     );
   }

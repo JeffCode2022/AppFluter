@@ -31,4 +31,11 @@ class TImages {
 
   ///----shopping bag png
   static const String shoppingBag = 'assets/img/icons8-shopping-bag-64.png';
+  static const String imgReparto =  'assets/img/3d-casual-life-delivery-boy-on-scooter-1.png';
+  static const String addProduct = 'assets/img/add.png';
+  static const String categoria = 'assets/img/categorys.png';
+  static const String roles = 'assets/img/roles.png';
+  static const String logout = 'assets/img/arrow.png';
+  static const String editPerfil = 'assets/img/edit-profile.png';
+  static const String pedidos = 'assets/img/pedidos.png';
 }

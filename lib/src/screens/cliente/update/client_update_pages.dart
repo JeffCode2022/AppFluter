@@ -56,10 +56,14 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
       child: ElevatedButton(
         onPressed: _contr.isEnable ? _contr.update : null,
         style: ElevatedButton.styleFrom(
+          elevation: 5,
+          shadowColor: MyColors.black,
           padding: const EdgeInsets.symmetric(
               vertical: 15, horizontal: 20), // Ajusta el padding del botón
-          backgroundColor: MyColors.primaryColor,
+          backgroundColor: MyColors.darkerGrey,
           side: BorderSide.none,
+          enableFeedback: true,
+          splashFactory: InkRipple.splashFactory,
         ),
         child: const Text(
           TTexts.updateButton,
@@ -101,7 +105,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
               filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
+              fillColor: MyColors.grey.withOpacity(0.3),
               border: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -116,7 +120,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
               filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
+              fillColor: MyColors.grey.withOpacity(0.3),
               border: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -134,7 +138,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
             ],
             decoration: InputDecoration(
               filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
+              fillColor: MyColors.grey.withOpacity(0.3),
               border: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
