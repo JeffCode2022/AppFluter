@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "260881124086",
+    "project_id": "appdelivery-auth",
+    "storage_bucket": "appdelivery-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260881124086:android:a6f5cf08a0eff91850fad7",
+        "android_client_info": {
+          "package_name": "com.delivery.autonoma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgg4xPrlSJIlo5nFPY9SD3YICfN_vt5hU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260881124086:android:81ab989ffa72238950fad7",
+        "android_client_info": {
+          "package_name": "com.example.delivery_autonoma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgg4xPrlSJIlo5nFPY9SD3YICfN_vt5hU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
