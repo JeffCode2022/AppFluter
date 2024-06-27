@@ -63,6 +63,7 @@ class MercadoPagoCreditCard {
   });
 
   MercadoPagoCreditCard.fromJsonList( List<dynamic> jsonList  ){
+    // ignore: unnecessary_null_comparison
     if ( jsonList == null ) {
       return;
     }
