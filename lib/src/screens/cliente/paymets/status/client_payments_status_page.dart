@@ -1,7 +1,9 @@
 import 'package:delivery_autonoma/src/screens/cliente/paymets/status/client_payments_status_controllers.dart';
+import 'package:delivery_autonoma/utils/constants/colors_delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class ClientPaymentsStatusPage extends StatefulWidget {
   const ClientPaymentsStatusPage({super.key});
@@ -26,108 +28,152 @@ class _ClientPaymentsStatusPageState extends State<ClientPaymentsStatusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.check_circle,
-                color: Colors.green,
-                size: 100.0,
-              ),
-              const SizedBox(height: 20.0),
-              const Text(
-                '¡Pago exitoso!',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              const Text(
-                'Gracias por tu compra.',
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20.0),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                padding: EdgeInsets.all(16.0),
-                child: const Column(
-                  children: [
-                    DetailRow(
-                      label: 'Número de Orden:',
-                      value: '123456789',
-                    ),
-                    DetailRow(
-                      label: 'Monto:',
-                      value: '\$99.99',
-                    ),
-                    DetailRow(
-                      label: 'Fecha:',
-                      value: '26 Junio 2024',
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 40.0),
-              ElevatedButton(
-                onPressed: () {
-                  // Acción al presionar el botón
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
-                  textStyle: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                child: const Text('Volver al Inicio'),
-              ),
-            ],
-          ),
-        ),
+    return  Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _clipPathOval(),
+          _textCardDetail(),
+          _textCardStatus()
+        ],
+      ),
+      // ignore: sized_box_for_whitespace
+      bottomNavigationBar: Container(
+        height: 100,
+        child: _buttonNext(),
       ),
     );
   }
 
+  Widget _textCardDetail() {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      child: controller.mercadoPagoPayment?.status == 'approved'
+       ? Text(
+       'Tu orden fue procesada exitosamente usando (${controller.mercadoPagoPayment?.paymentMethodId?.toUpperCase() ?? ''} **** ${controller.mercadoPagoPayment?.card?.lastFourDigits ?? ''})',
+        style: const TextStyle(
+          fontSize: 17
+        ),
+       textAlign: TextAlign.center,
+     )
+       : const Text(
+         'Tu pago fue rechazado',
+       style: TextStyle(
+            fontSize: 17
+        ),
+        textAlign: TextAlign.center,
+     ),
+    );
+  }
+
+    Widget _textCardStatus() {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: controller.mercadoPagoPayment?.status == 'approved'
+      ? const Text(
+        'Mira el estado de tu compra en la seccion de MIS PEDIDOS',
+        style: TextStyle(
+          fontSize: 17
+        ),
+        textAlign: TextAlign.center,
+      )
+      : Text(
+        controller.errorMessage ?? '',
+        style: const TextStyle(
+            fontSize: 17
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+   Widget _clipPathOval() {
+  return ClipPath(
+    clipper: OvalBottomBorderClipper(),
+    child: Container(
+      height: 250,
+      width: double.infinity,
+      color: MyColors.primary,
+      child: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (controller.mercadoPagoPayment?.status == 'approved')
+              const Icon(Icons.check_circle, color: Colors.green, size: 150)
+            else
+              const Icon(Icons.cancel, color: Colors.red, size: 150),
+            const SizedBox(height: 16),  // Added space between icon and text
+            Text(
+              controller.mercadoPagoPayment?.status == 'approved'
+                  ? 'Gracias por tu compra'
+                  : 'Falló la transacción',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+              textAlign: TextAlign.center,  // Centered the text
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+  Widget  _buttonNext(){
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'cliente/products/list');
+        },
+        style: ElevatedButton.styleFrom(
+            backgroundColor: MyColors.primary,
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+            )
+        ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: 50,
+                alignment: Alignment.center,
+                child: const Text(
+                  'FINALIZAR COMPRA',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: const EdgeInsets.only(left: 50, top: 2),
+                height: 30,
+                child: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            )
+
+          ],
+        ),
+      ),
+    );
+  }
 
    void refresh() {
     setState(() {});
   }
 }
 
-class DetailRow extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const DetailRow({super.key, required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(value),
-        ],
-      ),
-    );
-  }
-}

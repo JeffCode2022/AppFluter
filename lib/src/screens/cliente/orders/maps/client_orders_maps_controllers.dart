@@ -91,24 +91,48 @@ class ClientOrdersMapsController {
   ///-----------------  CREATE POLYLINE  -----------------
 
   Future<void> setPolylines(LatLng from, LatLng to) async {
-    PointLatLng pointFrom = PointLatLng(from.latitude, from.longitude);
-    PointLatLng pointTo = PointLatLng(to.latitude, to.longitude);
-    PolylineResult result = await PolylinePoints().getRouteBetweenCoordinates(
-        Environment.API_KEY_MAPS, pointFrom, pointTo);
+    try {
+      PointLatLng pointFrom = PointLatLng(from.latitude, from.longitude);
+      PointLatLng pointTo = PointLatLng(to.latitude, to.longitude);
 
-    for (PointLatLng point in result.points) {
-      points.add(LatLng(point.latitude, point.longitude));
+      // Create a PolylineRequest
+      PolylineRequest request = PolylineRequest(
+        origin: pointFrom,
+        destination: pointTo,
+        mode: TravelMode.driving,  // Specify the travel mode here
+      );
+
+      // Get the route
+      PolylinePoints polylinePoints = PolylinePoints();
+      PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+        request: request,
+        googleApiKey: Environment.API_KEY_MAPS,
+      );
+
+      if (result.points.isNotEmpty) {
+        List<LatLng> points = result.points
+            .map((point) => LatLng(point.latitude, point.longitude))
+            .toList();
+
+        Polyline polyline = Polyline(
+          polylineId: PolylineId('poly'),
+          color: MyColors.primaryColor,
+          points: points,
+          width: 6,
+        );
+
+        polylines.add(polyline);
+
+        // Assuming refresh is a function to update the UI
+        if (refresh != null) {
+          refresh!();
+        }
+      } else {
+        print('Error fetching polyline: ${result.errorMessage}');
+      }
+    } catch (e) {
+      print('Exception occurred while setting polylines: $e');
     }
-
-    Polyline polyline = Polyline(
-        polylineId: const PolylineId('poly'),
-        color: MyColors.primaryColor,
-        points: points,
-        width: 6);
-
-    polylines.add(polyline);
-
-    refresh!();
   }
 
 

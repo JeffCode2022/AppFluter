@@ -7,7 +7,7 @@ import 'package:delivery_autonoma/src/screens/cliente/paymets/installments/clien
 import 'package:delivery_autonoma/utils/constants/colors_delivery.dart';
 
 class ClientPaymentsInstallmentsPage extends StatefulWidget {
-  const ClientPaymentsInstallmentsPage({Key? key}) : super(key: key);
+  const ClientPaymentsInstallmentsPage({super.key});
 
   @override
   State<ClientPaymentsInstallmentsPage> createState() =>
@@ -61,7 +61,7 @@ class _ClientPaymentsInstallmentsPageState
     );
   }
 
-  Widget _textTotalPrice() {
+ Widget _textTotalPrice() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -69,12 +69,16 @@ class _ClientPaymentsInstallmentsPageState
         children: [
           const Text(
             'Total a pagar:',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold
+            ),
           ),
-          GetBuilder<ClientPaymentsInstallmentsControllers>(
-            builder: (controller) => Text(
-              'S/${controller.totalPymets}',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          Text(
+            '${controller.totalPymets}',
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold
             ),
           ),
         ],
@@ -123,7 +127,7 @@ class _ClientPaymentsInstallmentsPageState
     );
   }
 
-  Widget _dropDownInstallments() {
+Widget _dropDownInstallments() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Material(
@@ -132,36 +136,39 @@ class _ClientPaymentsInstallmentsPageState
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 7),
-          child: GetBuilder<ClientPaymentsInstallmentsControllers>(
-            builder: (controller) => Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: DropdownButton(
-                    underline: Container(
-                      alignment: Alignment.centerRight,
-                      child: const Icon(
-                        Icons.arrow_drop_down_circle,
-                        color: MyColors.primaryColor,
-                      ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: DropdownButton(
+                  underline: Container(
+                    alignment: Alignment.centerRight,
+                    child: const Icon(
+                      Icons.arrow_drop_down_circle,
+                      color: MyColors.primaryColor,
                     ),
-                    elevation: 3,
-                    isExpanded: true,
-                    hint: const Text(
-                      'Seleccionar número de cuotas',
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
-                    ),
-                    items: _dropDownItems(controller.installmentsList),
-                    value: controller.selectedInstallment,
-                    onChanged: (option) {
-                      setState(() {
-                        controller.selectedInstallment = option as String?;
-                      });
-                    },
                   ),
+                  elevation: 3,
+                  isExpanded: true,
+                  hint: const Text(
+                    'Seleccionar numero de coutas',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16
+                    ),
+                  ),
+                  items: _dropDownItems(controller.installmentsList),
+                  value: controller.selectedInstallment,
+                  onChanged: (option) {
+                    setState(() {
+                      print('Reparidor selecciondo $option');
+                      controller.selectedInstallment = option as String?;
+                      // _con.typeDocument = option; // ESTABLECIENDO EL VALOR SELECCIONADO
+                    });
+                  },
                 ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

@@ -44,28 +44,28 @@ class MercadoPagoProvider {
     }
   }
 
-  Future<MercadoPagoPaymentMethodInstallments> getInstallments(
-      String bin, double amount) async {
-    try {
-      final url =
-          Uri.https(urlMercadoPago!, '/v1/payment_methods/installments', {
-        'access_token': _mercadoPagoCredentials.accessToken,
-        'bin': bin,
-        'amount': '$amount'
-      });
+Future<MercadoPagoPaymentMethodInstallments> getInstallments(
+    String bin, double amount) async {
+  try {
+    final url =
+        Uri.https(urlMercadoPago!, '/v1/payment_methods/installments', {
+      'access_token': _mercadoPagoCredentials.accessToken,
+      'bin': bin,
+      'amount': '$amount'
+    });
 
-      final res = await http.get(url);
-      final data = json.decode(res.body);
-      print('DATA INSTALLMENTS: $data');
+    final res = await http.get(url);
+    final data = json.decode(res.body);
+    print('DATA INSTALLMENTS: $data');
 
-      final result = MercadoPagoPaymentMethodInstallments.fromJsonList(data);
+    final result = MercadoPagoPaymentMethodInstallments.fromJsonList(data);
 
-      return result.installmentList.first;
-    } catch (e) {
-      print('Error: $e');
-      return MercadoPagoPaymentMethodInstallments();
-    }
+    return result.installmentList.first;
+  } catch (e) {
+    print('Error: $e');
+    return MercadoPagoPaymentMethodInstallments();
   }
+}
 
   Future<Response> createCardToken({
     String? cvv,
@@ -113,69 +113,70 @@ class MercadoPagoProvider {
     }
   }
 
-  Future<http.Response?> createPayment({
-    String? cardId,
-    double? transactionAmount,
-    int? installments,
-    String? paymentMethodId,
-    String? paymentTypeId,
-    String? issuerId,
-    String? emailCustomer,
-    String? cardToken,
-    String? identificationType,
-    String? identificationNumber,
-    Order? order,
-  }) async {
-    try {
-      final url = Uri.http(_url, '/api/payments/createPay');
+ Future<http.Response?> createPayment({
+  String? cardId,
+  double? transactionAmount,
+  int? installments,
+  String? paymentMethodId,
+  String? paymentTypeId,
+  String? issuerId,
+  String? emailCustomer,
+  String? cardToken,
+  String? identificationType,
+  String? identificationNumber,
+  Order? order,
+}) async {
+  try {
+    final url = Uri.http(_url, '/api/payments/createPay');
 
-      Map<String, dynamic> body = {
-        'order': order,
-        'card_id': cardId,
-        'description': 'Flutter Delivery Autonoma',
-        'transaction_amount': transactionAmount,
-        'installments': installments,
-        'payment_method_id': paymentMethodId,
-        'payment_type_id': paymentTypeId,
-        'token': cardToken,
-        'issuer_id': issuerId,
-        'payer': {
-          'email': emailCustomer,
-          'identification': {
-            'type': identificationType,
-            'number': identificationNumber,
-          }
+    Map<String, dynamic> body = {
+      'order': order,
+      'card_id': cardId,
+      'description': 'Flutter Delivery Autonoma',
+      'transaction_amount': transactionAmount,
+      'installments': installments,
+      'payment_method_id': paymentMethodId,
+      'payment_type_id': paymentTypeId,
+      'token': cardToken,
+      'issuer_id': issuerId,
+      'payer': {
+        'email': emailCustomer,
+        'identification': {
+          'type': identificationType,
+          'number': identificationNumber,
         }
-      };
-
-      print('PARAMS: $body');
-
-      String bodyParams = json.encode(body);
-
-      Map<String, String> headers = {
-        'Content-type': 'application/json',
-        'Authorization': user!.sessionToken!
-      };
-
-      final res = await http.post(url, headers: headers, body: bodyParams);
-
-      if (res.statusCode == 401) {
-        MySnackBar.warningSnackBar(title: 'Sesión expirada');
-        SharedPref().logout(context!, user!.id);
-        return null;
       }
+    };
 
-      if (res.statusCode != 200 && res.statusCode != 201) {
-        print('Error: ${res.statusCode} ${res.body}');
-        MySnackBar.show(context!, 'Error: ${res.statusCode}');
-        return null;
-      }
+    print('PARAMS: $body');
 
-      return res;
-    } catch (e) {
-      print('Error: $e');
-      MySnackBar.show(context!, 'Error al procesar el pago. Inténtalo de nuevo.');
+    String bodyParams = json.encode(body);
+
+    Map<String, String> headers = {
+      'Content-type': 'application/json',
+      'Authorization': user!.sessionToken!
+    };
+
+    final res = await http.post(url, headers: headers, body: bodyParams);
+
+    if (res.statusCode == 401) {
+      MySnackBar.warningSnackBar(title: 'Sesión expirada');
+      SharedPref().logout(context!, user!.id);
       return null;
     }
+
+    if (res.statusCode != 200 && res.statusCode != 201) {
+      print('Error: ${res.statusCode} ${res.body}');
+      MySnackBar.show(context!, 'Error: ${res.statusCode}');
+      return null;
+    }
+
+    return res;
+  } catch (e) {
+    print('Error: $e');
+    MySnackBar.show(context!, 'Error al procesar el pago. Inténtalo de nuevo.');
+    return null;
   }
+}
+
 }

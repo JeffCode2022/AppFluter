@@ -22,7 +22,7 @@ class PolyLinePoints {
 
       var result = await NetworkUtil().getRouteBetweenCoordinates(
         request: PolylineRequest(
-          apiKey: googleApiKey,
+          proxy: Uri.parse(googleApiKey),
           origin: origin,
           destination: destination,
           mode: TravelMode.driving,
