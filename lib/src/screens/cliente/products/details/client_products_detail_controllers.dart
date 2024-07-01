@@ -22,11 +22,21 @@ class ClientProductsDetailController extends GetxController {
     refreshFunction = refresh;
     this.product = product;
     productPrice = product.price!;
+<<<<<<< HEAD
     selectedProducts = Product.fromJsonList(await _sharedPref.read('order')).toList();
       for (var p in selectedProducts) {
         // ignore: avoid_print
         print('Producto seleccionado: ${p.toJson()}');
       }
+=======
+    // _sharedPref.remove('order');
+    selectedProducts = Product.fromJsonList(await _sharedPref.read('order')).toList;
+      // ignore: avoid_function_literals_in_foreach_calls
+      selectedProducts.forEach((p) {
+        // ignore: avoid_print
+        print('Producto seleccionado: ${p.toJson()}');
+      });
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     
 
     refreshFunction!();

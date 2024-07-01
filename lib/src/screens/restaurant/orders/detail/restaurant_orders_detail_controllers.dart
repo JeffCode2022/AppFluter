@@ -32,9 +32,13 @@ class RestaurantOrderDetailController {
     this.refresh = refresh;
     this.order = order;
     user = User.fromJson(await _sharedPref.read('user'));
+<<<<<<< HEAD
     // ignore: use_build_context_synchronously
     _usersProvider.init(context, sessionUser: user!);
     // ignore: use_build_context_synchronously
+=======
+    _usersProvider.init(context, sessionUser: user!);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     _ordersProvider.init(context, user!);
     getTotal();
     getUsers();

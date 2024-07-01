@@ -9,7 +9,10 @@ import 'package:delivery_autonoma/utils/constants/image_delivery.dart';
 import 'package:delivery_autonoma/utils/constants/relative_time_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+<<<<<<< HEAD
 import 'package:iconsax/iconsax.dart';
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
 class RestaurantOrderDetailPage extends StatefulWidget {
   final Order order;
@@ -36,6 +39,7 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+<<<<<<< HEAD
       height: MediaQuery.of(context).size.height * 0.80,
       child: Scaffold(
         appBar: TAppBar(
@@ -54,11 +58,26 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(top: 0, right: 20),
+=======
+      height: MediaQuery.of(context).size.height * 0.90,
+      child: Scaffold(
+        appBar: TAppBar(
+          title: Text('Orden ${_con.order?.id ?? ''}',
+              style: const TextStyle(color: Colors.white)),
+          showBackArrow: true,
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(top: 10, right: 10),
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
               child: Text(
                 'Total: S/.${_con.total}',
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
+<<<<<<< HEAD
                     fontSize: 15,
+=======
+                    fontSize: 20,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
                     color: MyColors.dark),
               ),
             ),
@@ -76,11 +95,18 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
                     ),
                   ),
                   _bottomDetails(),
+<<<<<<< HEAD
                   _con.order!.status == 'PAGADO' ? _buttonNext() : Container(),
                   const SizedBox(height: 30),
                 ],
               )
             : Center(child: NoDataWidget(text: 'Ningún producto agregado...', )),
+=======
+                  _buttonNext(),
+                ],
+              )
+            : Center(child: NoDataWidget(text: 'Ningún producto agregado...')),
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       ),
     );
   }
@@ -92,6 +118,7 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
           Divider(color: Colors.grey[400], endIndent: 30, indent: 30),
           const SizedBox(height: 5), // Reducir el espacio
           _textDescription(),
+<<<<<<< HEAD
           _con.order!.status != 'PAGADO' ? _deliveryData() : Container(),
           _con.order!.status == 'PAGADO' ? _dropDown(_con.users) : Container(),
           _textData(
@@ -108,6 +135,15 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
               'Fecha de pedido:',
               RelativeTimeUtil.getRelativeTime(_con.order?.timestamp ?? 0)),
           const SizedBox(height: 30), // Agregar espacio al final
+=======
+          _dropDown(_con.users),
+          _textData('Cliente:',
+              '${_con.order?.client?.name ?? ''} ${_con.order?.client?.lastname ?? ''}'),
+          _textData('Entregar en:', _con.order?.address?.address ?? ''),
+          _textData('Fecha de pedido:',
+              RelativeTimeUtil.getRelativeTime(_con.order?.timestamp ?? 0)),
+          const SizedBox(height: 10), // Agregar espacio al final
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         ],
       ),
     );
@@ -119,7 +155,11 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
       child: ElevatedButton(
         onPressed: _con.updateOrder,
         style: ElevatedButton.styleFrom(
+<<<<<<< HEAD
           backgroundColor: MyColors.primary,
+=======
+          backgroundColor: MyColors.primaryColor,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -221,17 +261,27 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
     );
   }
 
+<<<<<<< HEAD
   Widget _textData(String title, String content,
       {TextStyle? style, required IconData iconData}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: ListTile(
         leading: Icon(iconData), // Agregar icono como parte del ListTile
+=======
+  Widget _textData(String title, String content) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListTile(
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         title: Text(title),
         subtitle: Text(
           content,
           maxLines: 2,
+<<<<<<< HEAD
           style: style,
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         ),
       ),
     );
@@ -240,11 +290,19 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
   Widget _textDescription() {
     return Container(
       alignment: Alignment.centerLeft,
+<<<<<<< HEAD
       margin: const EdgeInsets.symmetric(horizontal: 30),
       child: Text(
         _con.order?.status == 'PAGADO'
             ? 'Asignar repartidor:'
             : 'Repartidor asignado:',
+=======
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        _con.order?.status == 'PAGADO'
+            ? 'Asignar repartidor'
+            : 'Repartidor asignado',
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         style: const TextStyle(
           fontStyle: FontStyle.italic,
           color: MyColors.primaryColor,
@@ -272,7 +330,11 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
                     alignment: Alignment.centerRight,
                     child: const Icon(
                       Icons.arrow_drop_down_circle,
+<<<<<<< HEAD
                       color: MyColors.primary,
+=======
+                      color: MyColors.primaryColor,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
                     ),
                   ),
                   elevation: 3,
@@ -285,7 +347,10 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
                   value: _con.idDelivery,
                   onChanged: (String? option) {
                     setState(() {
+<<<<<<< HEAD
                       // ignore: avoid_print
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
                       print('Reparidor selecciondo $option');
                       _con.idDelivery = option;
                       // Lógica para manejar el cambio de opción
@@ -318,7 +383,10 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
                 fadeInDuration: const Duration(milliseconds: 50),
                 placeholder: const AssetImage(TImages.noData),
               ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
             const SizedBox(width: 5),
             Text(user.name!)
@@ -326,6 +394,7 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
         ),
       ));
     }
+<<<<<<< HEAD
     return list;
   }
 
@@ -333,6 +402,11 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
+=======
+
+    Widget deliveryData() {
+      return Row(
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         children: [
           SizedBox(
             height: 40,
@@ -345,6 +419,7 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
               fadeInDuration: const Duration(milliseconds: 50),
               placeholder: const AssetImage(TImages.noData),
             ),
+<<<<<<< HEAD
 
           ),
           const SizedBox(width: 5),
@@ -353,6 +428,16 @@ class _RestaurantOrderDetailPageState extends State<RestaurantOrderDetailPage> {
         ],
       ),
     );
+=======
+          ),
+          const SizedBox(width: 5),
+          Text('${_con.order!.delivery!.name!} ${_con.order!.delivery!.lastname!}'),
+        ],
+      );
+     }
+
+    return list;
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   void refresh() {

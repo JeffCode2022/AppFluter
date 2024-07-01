@@ -52,6 +52,7 @@ class Product {
         quantity: json["quantity"],
       );
 
+<<<<<<< HEAD
 // Static method to convert a list of JSON objects to a list of Products
   static List<Product> fromJsonList(dynamic jsonList) {
     if (jsonList is List) {
@@ -59,6 +60,16 @@ class Product {
     } else {
       return [];
     }
+=======
+  Product.fromJsonList(List<dynamic> jsonList) {
+    // ignore: unnecessary_null_comparison
+    if (jsonList == null) return;
+    // ignore: avoid_function_literals_in_foreach_calls
+    jsonList.forEach((item) {
+      Product product = Product.fromJson(item);
+      toList.add(product);
+    });
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   Map<String, dynamic> toJson() => {

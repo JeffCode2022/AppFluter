@@ -29,7 +29,11 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const TAppBar(
+<<<<<<< HEAD
           title: Text('Mi orden', style: TextStyle(fontSize: 20),),
+=======
+          title: Text('Mi orden', style: TextStyle(color: Colors.white)),
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           showBackArrow: true,
         ),
         bottomNavigationBar: SizedBox(
@@ -64,12 +68,20 @@ class _ClientOrdersCreatePageState extends State<ClientOrdersCreatePage> {
   //----button next
   Widget _buttonNext() {
     return Container(
+<<<<<<< HEAD
       margin: const EdgeInsets.only(left: 50, right: 50, top: 30, bottom: 30),
       child: ElevatedButton(
         onPressed: _con.gotoAddressList,
         style: ElevatedButton.styleFrom(
            foregroundColor: Colors.white,
           backgroundColor: MyColors.primary,
+=======
+      margin: const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 30),
+      child: ElevatedButton(
+        onPressed: _con.gotoAddressList,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: MyColors.primaryColor,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             padding: const EdgeInsets.symmetric(vertical: 5),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12))),

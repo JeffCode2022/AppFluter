@@ -26,7 +26,10 @@ class ClientAddressCreateController {
     this.context = context;
     this.refresh = refresh;
     user = User.fromJson(await _sharedPref.read('user'));
+<<<<<<< HEAD
     // ignore: use_build_context_synchronously
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     _addressProvider.init(context, user!);
   }
 
@@ -36,6 +39,13 @@ class ClientAddressCreateController {
     double lat = refPoint['lat'] ?? 0;
     double lng = refPoint['lng'] ?? 0;
 
+<<<<<<< HEAD
+=======
+    // Imprimir valores de los TextField
+    print('Address Name: $addressName');
+    print('Neighborhood: $neighborhood');
+    print('Lat: $lat, Lng: $lng');
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
     if (addressName.isEmpty || neighborhood.isEmpty || lat == 0 || lng == 0) {
       MySnackBar.warningSnackBar(

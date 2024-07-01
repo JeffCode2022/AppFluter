@@ -11,7 +11,11 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 
 class User {
+<<<<<<< HEAD
   String id = '';
+=======
+  String? id;
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   String? name;
   String? lastname;
   String? email;
@@ -23,7 +27,11 @@ class User {
   List<User> toList = [];
 
   User({
+<<<<<<< HEAD
     this.id = '',
+=======
+    this.id,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     this.name,
     this.lastname,
     this.email,
@@ -35,7 +43,11 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
+<<<<<<< HEAD
         id: json["id"] is int ? json["id"].toString() : json["id"] as String? ?? '',
+=======
+        id: json["id"] is int ? json["id"].toString() : json["id"] as String?,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         name: json["name"] ?? '',
         lastname: json["lastname"] ?? '',
         email: json["email"] ?? '',
@@ -50,7 +62,10 @@ class User {
  
 
  void fromJsonList(List<dynamic> jsonList) {
+<<<<<<< HEAD
     // ignore: unnecessary_null_comparison
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     if (jsonList == null) return;
     for (var item in jsonList) {
       User user = User.fromJson(item);

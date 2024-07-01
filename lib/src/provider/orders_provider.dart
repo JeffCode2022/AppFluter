@@ -1,5 +1,9 @@
 import 'dart:convert';
 import 'package:delivery_autonoma/src/api/enviroment.dart';
+<<<<<<< HEAD
+=======
+import 'package:delivery_autonoma/src/models/address.dart';
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 import 'package:delivery_autonoma/src/models/order.dart';
 import 'package:delivery_autonoma/src/models/response_api.dart';
 import 'package:delivery_autonoma/src/models/user.dart';
@@ -9,7 +13,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class OrdersProvider {
+<<<<<<< HEAD
   final String _url = Environment.API_DELIVERY;
+=======
+  final String _url = Enviroment.API_DELIVERY;
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   final String _api = '/api/orders';
   BuildContext? context;
   User? sessionUser;
@@ -33,7 +41,11 @@ class OrdersProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
+=======
+        SharedPref().logout(context!, sessionUser!.id!);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);
@@ -59,7 +71,11 @@ class OrdersProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
+=======
+        SharedPref().logout(context!, sessionUser!.id!);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);
@@ -87,6 +103,7 @@ class OrdersProvider {
     }
   }
 
+<<<<<<< HEAD
   Future<List<Order>> getByDeliveryAndStatus(
       String idDelivery, String status) async {
     try {
@@ -162,6 +179,8 @@ class OrdersProvider {
     }
   }
 
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   Future<ResponseApi?> updateToDispatched(Order order) async {
     try {
       Uri url = Uri.http(_url, '$_api/updateToDispatched');
@@ -176,6 +195,7 @@ class OrdersProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
       }
 
@@ -258,6 +278,9 @@ class OrdersProvider {
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
         SharedPref().logout(context!, sessionUser!.id);
+=======
+        SharedPref().logout(context!, sessionUser!.id!);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);

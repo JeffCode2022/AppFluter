@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
+
+  url_launcher: ^6.0.20
+
   flutter_native_splash: ^2.3.13
   smooth_page_indicator: ^1.1.0
   get: ^4.6.5
@@ -20,7 +23,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   lottie: ^3.1.0
   shared_preferences: ^2.2.2
-  firebase_core: ^3.1.0
+
+  firebase_core: ^2.30.0
+
   image_picker: ^1.1.0
   permission_handler: ^11.3.1
   http: ^1.2.1
@@ -28,28 +33,25 @@ dependencies:
   logger: ^2.0.0
   get_storage: ^2.1.1
   path: ^1.9.0
-  firebase_storage: ^12.0.1
+  firebase_storage: ^11.7.3
+
   sn_progress_dialog: ^1.1.4
   flutter_masked_text2: ^0.9.1
   modal_bottom_sheet: ^3.0.0
   flutter_image_slideshow: ^0.1.6
   google_maps_flutter: ^2.6.1
-  geolocator: ^12.0.0
+
+  geolocator: ^11.0.0
   geocoding: ^3.0.0
-  location: ^6.0.2
-  flutter_polyline_points: ^2.0.0
-  url_launcher: ^6.3.0
-  rive: ^0.13.7
-  provider: ^6.0.1  
-  socket_io_client: ^2.0.3+1
-  flutter_advanced_drawer: ^1.3.6
-  flutter_credit_card: ^4.0.1
-  flutter_custom_clippers: ^2.1.0
+  
+
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+
+  flutter_lints: ^3.0.0
+
 
    # Utility packages
  
@@ -60,57 +62,15 @@ flutter:
 
   assets:
    - assets/img/
-   - assets/img/animations/
-   - assets/img/banners/
-   - assets/img/paymet/
+
    - assets/social/
    - assets/json/
    - assets/fonts/
 
 
-
   fonts:
-    - family: Roboto
-      fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Roboto-Bold.ttf
-          weight: 700
-    - family: JetBrainsMono
-      fonts:
-        - asset: assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf
-        - asset: assets/fonts/JetBrainsMono-VariableFont_wght.ttf
-          weight: 200
-    - family: MadimiOne
-      fonts:
-        - asset: assets/fonts/MadimiOne-Regular.ttf
-          weight: 500
-    - family: SFPRODISPLAY
-      fonts:
-        - asset: assets/fonts/SFPRODISPLAYBOLD.OTF
-          weight: 900
-    - family: Archivo
-      fonts:
-        - asset: assets/fonts/Archivo-VariableFont_wdth,wght.ttf
-          weight: 900
-    - family: SFPRO
-      fonts:
-        - asset: assets/fonts/SF-Pro-Rounded-Bold.ttf
-          weight: 700
-    - family: MadimiOne
-      fonts:
-        - asset: assets/fonts/MadimiOne-Regular.ttf
-          weight: 500      
-    - family: Nunito
-      fonts:
-        - asset: assets/fonts/Nunito-Italic-VariableFont_wght.ttf
-          weight: 900
-        - asset: assets/fonts/Nunito-VariableFont_wght.ttf
-          weight: 900 
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Poppins-Medium.ttf
-          weight: 700 
+     - family: SFProDisplay
+       fonts:
+         - asset: assets\fonts\SFProText-Bold.ttf
+           weight: 700
+

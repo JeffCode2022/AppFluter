@@ -84,7 +84,11 @@ class ClienteUpdateController {
           MySnackBar.successSnackBar( title: 'Actualización Exitosa', message: '${responseApi.message}');
       
       if (responseApi.success!) {
+<<<<<<< HEAD
         user = await usersProvider.getById(user!.id); // obtener el usuario actualizado
+=======
+        user = await usersProvider.getById(user!.id!); // obtener el usuario actualizado
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         _sharedPref.save('user', user!.toJson());
         Get.offAllNamed('cliente/products/list');
        

@@ -13,7 +13,11 @@ class NoDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+<<<<<<< HEAD
       margin: const EdgeInsets.only(bottom:70),
+=======
+      margin: const EdgeInsets.only(bottom: 80),
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -24,8 +28,12 @@ class NoDataWidget extends StatelessWidget {
           ),
           Text(
             text,
+<<<<<<< HEAD
             style: Theme.of(context).textTheme.titleLarge,
             
+=======
+            style: Theme.of(context).textTheme.bodyLarge,
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           ),
         ],
       ),

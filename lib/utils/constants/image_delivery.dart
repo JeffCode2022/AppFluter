@@ -31,16 +31,23 @@ class TImages {
 
   ///----shopping bag png
   static const String shoppingBag = 'assets/img/icons8-shopping-bag-64.png';
+<<<<<<< HEAD
   static const String imgReparto =
       'assets/img/3d-casual-life-delivery-boy-on-scooter-1.png';
+=======
+  static const String imgReparto =  'assets/img/3d-casual-life-delivery-boy-on-scooter-1.png';
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   static const String addProduct = 'assets/img/add.png';
   static const String categoria = 'assets/img/categorys.png';
   static const String roles = 'assets/img/roles.png';
   static const String logout = 'assets/img/arrow.png';
   static const String editPerfil = 'assets/img/edit-profile.png';
   static const String pedidos = 'assets/img/pedidos.png';
+<<<<<<< HEAD
 
   //// animations
   static const String docerAnimation =
       'assets/img/animations/Animation - 1712698507915.json';
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 }

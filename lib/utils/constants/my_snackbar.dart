@@ -11,6 +11,7 @@ class MySnackBar {
     if (context == null) return;
 
     FocusScope.of(context).requestFocus(FocusNode());
+<<<<<<< HEAD
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
         elevation: 0,
         duration: const Duration(seconds: 3),
@@ -28,6 +29,42 @@ class MySnackBar {
               child: Text(message,
                   style: Theme.of(Get.context!).textTheme.labelLarge)),
         )));
+=======
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+
+    final snackBar = SnackBar(
+      elevation: 0,
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.transparent,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
+      content: Container(
+        decoration: BoxDecoration(
+          color: THelperFunctions.isDarkMode(context)
+              ? MyColors.primary.withOpacity(0.9)
+              : MyColors.primary.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Center(
+          child: Text(
+            message,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: MyColors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.5,
+                ),
+          ),
+        ),
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   static void successSnackBar({
@@ -84,4 +121,8 @@ class MySnackBar {
       icon: const Icon(Iconsax.warning_2, color: MyColors.white),
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db

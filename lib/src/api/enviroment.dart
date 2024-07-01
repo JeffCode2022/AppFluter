@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+<<<<<<< HEAD
 import 'package:delivery_autonoma/src/models/mercado_pago_credentials.dart';
 
 class Environment {
@@ -11,3 +12,10 @@ class Environment {
     accessToken: 'TEST-3921421188842968-062113-4e9e43a5be051df8d17481be8c1d656f-1797189366',
   );
 }
+=======
+class Enviroment {
+  static const String API_DELIVERY = '192.168.18.14:3000';
+}
+
+
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db

@@ -25,7 +25,10 @@ class ResponseApi {
     try {
       data = json['data'];
     } catch (e) {
+<<<<<<< HEAD
       // ignore: avoid_print
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       print('Exception data $e');
     }
   }

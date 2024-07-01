@@ -2,10 +2,15 @@ import 'package:delivery_autonoma/src/models/response_api.dart';
 import 'package:delivery_autonoma/src/models/user.dart';
 import 'package:delivery_autonoma/src/provider/users_provider.dart';
 import 'package:delivery_autonoma/src/screens/signup/signup.dart';
+<<<<<<< HEAD
 import 'package:delivery_autonoma/utils/constants/image_delivery.dart';
 import 'package:delivery_autonoma/utils/constants/my_snackbar.dart';
 import 'package:delivery_autonoma/utils/constants/shared_pref.dart';
 import 'package:delivery_autonoma/utils/popups/full_screen_loader.dart';
+=======
+import 'package:delivery_autonoma/utils/constants/my_snackbar.dart';
+import 'package:delivery_autonoma/utils/constants/shared_pref.dart';
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -56,10 +61,14 @@ void login() async {
     User user = User.fromJson(responseApi!.data);
     _sharedPref.save('user', user.toJson());
 
+<<<<<<< HEAD
 
     if (user.roles.length > 1) {
       TFullScreenLoader.openLoadingDialog('Iniciando sesión...', TImages.docerAnimation);
       await Future.delayed(const Duration(seconds: 2));
+=======
+    if (user.roles.length > 1) {
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       Get.offAllNamed('roles');
     } else {
       Get.offAllNamed(user.roles[0].route!);

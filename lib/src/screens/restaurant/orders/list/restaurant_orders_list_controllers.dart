@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import 'dart:ui';
 
+=======
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 import 'package:delivery_autonoma/src/models/order.dart';
 import 'package:delivery_autonoma/src/provider/orders_provider.dart';
 import 'package:delivery_autonoma/src/screens/restaurant/categories/create/restaurant_categories_create_page.dart';
@@ -18,7 +21,11 @@ class RestaurantProductsListControllers {
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   Function? refresh;
   List<String> status = ['PAGADO', 'DESPACHADO', 'EN CAMINO', 'ENTREGADO'];
+<<<<<<< HEAD
   bool isUpdate = false;
+=======
+  bool? isUpdate;
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
   final OrdersProvider _orderProvider = OrdersProvider();
 
@@ -36,7 +43,11 @@ class RestaurantProductsListControllers {
   }
 
   void logout() {
+<<<<<<< HEAD
     _sharedPref.logout(context!, user!.id);
+=======
+    _sharedPref.logout(context!, user!.id!);
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   void goToCategoriesCreate() {
@@ -57,6 +68,7 @@ class RestaurantProductsListControllers {
     Navigator.popAndPushNamed(context!, 'roles');
   }
 
+<<<<<<< HEAD
 void openBottomSheet(BuildContext context, Order order, VoidCallback refresh) async {
   final result = await showModalBottomSheet<bool>(
     isScrollControlled: true,
@@ -85,3 +97,15 @@ void openBottomSheet(BuildContext context, Order order, VoidCallback refresh) as
   }
 }
 }
+=======
+  void openBottomShet(Order order) async {
+    isUpdate = await showModalBottomSheet(
+        isScrollControlled: true,
+        context: context!,
+        builder: (context) => RestaurantOrderDetailPage(order: order));
+    if (isUpdate!) {
+      refresh!();
+    }
+  }
+}
+>>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
