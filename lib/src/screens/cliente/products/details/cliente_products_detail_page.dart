@@ -63,13 +63,8 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
   Widget _imageSlideshow() {
     return ImageSlideshow(
       width: double.infinity,
-<<<<<<< HEAD
       height: 280,
       indicatorColor: MyColors.primary,
-=======
-      height: 300,
-      indicatorColor: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       onPageChanged: (value) {
         debugPrint('Page changed: $value');
       },
@@ -132,7 +127,7 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
             _contr.product?.description ?? '',
             style: const TextStyle(fontSize: 13, color: Colors.grey),
           ),
-          const TBrandTitleWithVerifiedIcon(title: 'Autonoma')
+          const TBrandTitleWithVerifiedIcon()
         ],
       ),
     );
@@ -191,20 +186,12 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
   ///--------------BUTTOM SHOPPING BAG-------------------
   Widget _shoppingBag() {
     return Container(
-<<<<<<< HEAD
       width: double.infinity,
       margin: const EdgeInsets.only(left: 40, right: 40, bottom: 60),
       child: ElevatedButton(
           onPressed: _contr.addToBag,
           style: ElevatedButton.styleFrom(
             backgroundColor: MyColors.primary,
-=======
-      margin: const EdgeInsets.only(left: 90, right: 80, bottom: 60),
-      child: ElevatedButton(
-          onPressed: _contr.addToBag,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -238,12 +225,7 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                 ),
               )
             ],
-<<<<<<< HEAD
           )),
-=======
-          )
-          ),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     );
   }
 
@@ -256,7 +238,6 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
         maxLines: 4,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
-<<<<<<< HEAD
         
           labelText: 'Agrega o comenta el producto de tu preferencia',
           labelStyle: TextStyle(color: MyColors.primary.withOpacity(0.7)),
@@ -274,23 +255,12 @@ class _ClientProductsDetailPageState extends State<ClientProductsDetailPage> {
                       color: Color(0xFFE0E0E0),
                       width: 2.0), // Color del borde cuando no está enfocado
                 ),
-=======
-          filled: true,
-          fillColor: MyColors.grey.withOpacity(0.1),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          labelText: 'Agrega o comenta el producto de tu preferencia',
-          labelStyle: TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-          prefixIcon: const Icon(Iconsax.archive, color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         ),
       ),
     );
   }
 
-  void refresh() {
+   void refresh() {
     setState(() {});
   }
 }

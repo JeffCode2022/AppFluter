@@ -4,10 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_linux
-<<<<<<< HEAD
   rive_common
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   url_launcher_linux
 )
 

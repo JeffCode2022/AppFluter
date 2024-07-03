@@ -10,11 +10,7 @@ import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
 
 class ProductsProvider {
-<<<<<<< HEAD
   final String _url = Environment.API_DELIVERY;
-=======
-  final String _url = Enviroment.API_DELIVERY;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   final String _api = '/api/products';
   BuildContext? context;
   User? sessionUser;
@@ -36,20 +32,39 @@ Future<List<Product>> getByCategory(String idCategory) async {
 
     if (res.statusCode == 401) {
       MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
       SharedPref().logout(context!, sessionUser!.id);
-=======
-      SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     }
 
     final data = json.decode(res.body);
     final products = Product.fromJsonList(data);
-<<<<<<< HEAD
     return products;
-=======
-    return products.toList;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
+
+   
+  } catch (e) {
+    // ignore: avoid_print
+    print('Error: $e');
+    return [];
+  }
+}
+
+Future<List<Product>> getByCategoryAndProductName(String idCategory, String productName ) async {
+  try {
+    Uri url = Uri.http(_url, '$_api/findByCategoryAndProductName/$idCategory/$productName');
+    Map<String, String> headers = {
+      'Content-type': 'application/json',
+      'Authorization': sessionUser!.sessionToken!
+    };
+
+    final res = await http.get(url, headers: headers);
+
+    if (res.statusCode == 401) {
+      MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
+      SharedPref().logout(context!, sessionUser!.id);
+    }
+
+    final data = json.decode(res.body);
+    final products = Product.fromJsonList(data);
+    return products;
 
    
   } catch (e) {

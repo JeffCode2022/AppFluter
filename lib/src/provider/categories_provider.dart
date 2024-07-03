@@ -9,11 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class CategoriesProvider {
-<<<<<<< HEAD
   final String _url = Environment.API_DELIVERY;
-=======
-  final String _url = Enviroment.API_DELIVERY;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   final String _api = '/api/categories';
   BuildContext? context;
   User? sessionUser;
@@ -36,11 +32,7 @@ class CategoriesProvider {
 
     if (res.statusCode == 401) {
       MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
       SharedPref().logout(context!, sessionUser!.id);
-=======
-      SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     }
 
     final data = json.decode(res.body);
@@ -84,11 +76,7 @@ class CategoriesProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);

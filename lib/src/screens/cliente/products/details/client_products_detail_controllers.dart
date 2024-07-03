@@ -1,7 +1,7 @@
 import 'package:delivery_autonoma/src/models/product.dart';
 import 'package:delivery_autonoma/utils/constants/my_snackbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 import '../../../../../utils/constants/shared_pref.dart';
 
 class ClientProductsDetailController extends GetxController {
@@ -22,21 +22,11 @@ class ClientProductsDetailController extends GetxController {
     refreshFunction = refresh;
     this.product = product;
     productPrice = product.price!;
-<<<<<<< HEAD
     selectedProducts = Product.fromJsonList(await _sharedPref.read('order')).toList();
       for (var p in selectedProducts) {
         // ignore: avoid_print
         print('Producto seleccionado: ${p.toJson()}');
       }
-=======
-    // _sharedPref.remove('order');
-    selectedProducts = Product.fromJsonList(await _sharedPref.read('order')).toList;
-      // ignore: avoid_function_literals_in_foreach_calls
-      selectedProducts.forEach((p) {
-        // ignore: avoid_print
-        print('Producto seleccionado: ${p.toJson()}');
-      });
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     
 
     refreshFunction!();
@@ -66,6 +56,9 @@ class ClientProductsDetailController extends GetxController {
         title: 'Producto agregado', message: 'Producto agregado al carrito');
     // ignore: avoid_print
     print('Producto agregado al carrito${product!.toJson()}');
+    print('Productos seleccionados: ${selectedProducts.length}');
+    refreshFunction!();
+    navigator?.popAndPushNamed('cliente/products/list');
   }
 
   void addProduct() {
@@ -81,6 +74,9 @@ class ClientProductsDetailController extends GetxController {
       productPrice = product!.price! * counter;
       product?.quantity = counter;
       refreshFunction!();
+      
     }
   }
+
+  
 }

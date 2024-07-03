@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'dart:ui';
 
 import 'package:delivery_autonoma/src/models/order.dart';
@@ -22,25 +21,11 @@ class DeliveryOrdersListControllers {
   bool isUpdate = false;
 
   final OrdersProvider _orderProvider = OrdersProvider();
-=======
-import 'package:delivery_autonoma/src/models/user.dart';
-import 'package:delivery_autonoma/utils/constants/shared_pref.dart';
-import 'package:flutter/material.dart';
-
-class DeliveryOrdersListController {
-  BuildContext? context;
-   
-   final SharedPref _sharedPref = SharedPref();
-  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-  User? user;
-  Function? refresh;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
   Future<void> init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
     user = User.fromJson(await _sharedPref.read('user'));
-<<<<<<< HEAD
     // ignore: use_build_context_synchronously
     _orderProvider.init(context, user!);
     refresh();
@@ -70,59 +55,42 @@ class DeliveryOrdersListController {
   void goToProductsCreate() {
     Get.to(() => const RestaurantProductsCreatePage(),
         transition: Transition.rightToLeft);
-=======
-    refresh();
-  }
-
-  void logout() {
-    _sharedPref.logout(context!, user!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   void openDrawer() {
     key.currentState!.openDrawer();
   }
 
-<<<<<<< HEAD
   void goToRoles() {
     Navigator.popAndPushNamed(context!, 'roles');
   }
 
-void openBottomSheet(BuildContext context, Order order, VoidCallback refresh) async {
-  final result = await showModalBottomSheet<bool>(
-    isScrollControlled: true,
-    context: context,
-    builder: (context) {
-      return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+  void openBottomSheet(
+      BuildContext context, Order order, VoidCallback refresh) async {
+    final result = await showModalBottomSheet<bool>(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: Container(
+              color: Colors.white.withOpacity(0.7),
+              child: DeliveryOrderDetailPage(order: order),
+            ),
           ),
-          child: Container(
-            color: Colors.white.withOpacity(0.7),
-            child: DeliveryOrderDetailPage(order: order),
-          ),
-        ),
-      );
-    },
-  );
+        );
+      },
+    );
 
-  bool isUpdate = result ?? false;
+    bool isUpdate = result ?? false;
 
-  if (isUpdate) {
-    refresh();
+    if (isUpdate) {
+      refresh();
+    }
   }
 }
-}
-=======
-  void goToPage(String route) {
-    Navigator.pushNamedAndRemoveUntil(context!, route, (route) => false);
-  }
-
-  void goToRoles() {
-    Navigator.pushNamedAndRemoveUntil(context!, 'roles', (route) => false);
-  }
-}
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db

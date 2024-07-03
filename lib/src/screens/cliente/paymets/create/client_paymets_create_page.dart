@@ -17,7 +17,7 @@ class ClientPaymetsCreatePage extends StatefulWidget {
 }
 
 class _ClientPaymetsCreatePageState extends State<ClientPaymetsCreatePage> {
-  final controller = Get.put(ClientPaymetsCreateControllers());
+  final controller = Get.put(ClientPaymentsCreateController());
 
   @override
   void initState() {
@@ -49,8 +49,7 @@ class _ClientPaymetsCreatePageState extends State<ClientPaymetsCreatePage> {
               isShadowEnabled: true,
               shadowConfig: FloatingShadowConfig(),
             ),
-            cardBgColor: Colors.black,
-            textStyle: TextStyle(color: Colors.amberAccent.withOpacity(0.7), fontFamily: 'JetBrainsMono', fontSize: 19),
+            textStyle: const TextStyle(color: Colors.white, fontFamily: 'JetBrainsMono', fontSize: 19),
             labelValidThru: 'VALID\nTHRU',
             obscureCardNumber: true,
             obscureInitialCardNumber: false,
@@ -59,11 +58,11 @@ class _ClientPaymetsCreatePageState extends State<ClientPaymetsCreatePage> {
             isChipVisible: false,
           ),
           CreditCardForm(
-            formKey: controller.keyform, // Required
-            cardNumber: controller.cardNumber!, // Required
-            expiryDate: controller.expiryDate!, // Required
-            cardHolderName: controller.cardHolderName!, // Required
-            cvvCode: controller.cvvCode!, // Required
+            formKey: controller.keyForm, // Required
+            cardNumber: '', // Required
+            expiryDate: '', // Required
+            cardHolderName: '', // Required
+            cvvCode: '', // Required
             onCreditCardModelChange:
                 controller.onCreditCardWidgetChange, // Required
             obscureCvv: true,

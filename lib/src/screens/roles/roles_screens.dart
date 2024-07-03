@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 import 'dart:ui';
 
 import 'package:delivery_autonoma/src/models/rol.dart';
 import 'package:delivery_autonoma/src/screens/roles/roles_controller.dart';
 import 'package:delivery_autonoma/utils/constants/colors_delivery.dart';
-=======
-import 'package:delivery_autonoma/common/widgets/appbar/appbar.dart';
-import 'package:delivery_autonoma/src/models/rol.dart';
-import 'package:delivery_autonoma/src/screens/roles/roles_controller.dart';
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 import 'package:delivery_autonoma/utils/constants/image_delivery.dart';
 import 'package:delivery_autonoma/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-<<<<<<< HEAD
 import 'package:rive/rive.dart';
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
 class RolesPage extends StatefulWidget {
   const RolesPage({super.key});
@@ -39,7 +30,6 @@ class _RolesPageState extends State<RolesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       body: Stack(
         children: [
           // Background image
@@ -154,23 +144,6 @@ class _RolesPageState extends State<RolesPage> {
         ],
       ),
     );
-=======
-        appBar: const TAppBar(
-            title: Center(
-                child: Text('Selecciona un rol',
-                    style: TextStyle(color: Colors.white)))),
-        body: Container(
-          margin:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.14),
-          child: ListView(
-            children: _con.user != null
-                ? _con.user!.roles.map((Rol rol) {
-                    return _cardRol(rol);
-                  }).toList()
-                : const [],
-          ),
-        ));
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   Widget _cardRol(Rol rol) {
@@ -178,7 +151,6 @@ class _RolesPageState extends State<RolesPage> {
       onTap: () {
         _con.goToPage(rol.route!);
       },
-<<<<<<< HEAD
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 60.0),
         child: Container(
@@ -220,35 +192,6 @@ class _RolesPageState extends State<RolesPage> {
             ],
           ),
         ),
-=======
-      child: Column(
-        children: [
-          SizedBox(
-            height: 100,
-            child: rol.image != null && rol.image!.isNotEmpty
-                ? FadeInImage(
-                    image: NetworkImage(rol.image!),
-                    placeholder: const AssetImage(TImages.defaultImage),
-                    fit: BoxFit.contain,
-                    fadeInDuration: const Duration(milliseconds: 50),
-                  )
-                : const Image(
-                    image: AssetImage(TImages.defaultImage),
-                    fit: BoxFit.contain,
-                  ),
-          ),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
-          Text(
-            rol.name ?? '',
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: TSizes.spaceBtwSections),
-        ],
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       ),
     );
   }

@@ -26,20 +26,12 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return AppBar(
-<<<<<<< HEAD
-=======
-      elevation: 5,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       automaticallyImplyLeading: false,
       leading: showBackArrow
           ? IconButton(
               onPressed: () => Get.back(),
               icon: Icon(Iconsax.arrow_left,
-<<<<<<< HEAD
                   color: dark ? MyColors.white : MyColors.dark),
-=======
-                  color: dark ? MyColors.white : MyColors.white),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )
           : leadingIcon != null
               ? IconButton(
@@ -47,7 +39,6 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(leadingIcon),
                 )
               : null,
-<<<<<<< HEAD
       title: title ,
       centerTitle: true,
       actions: actions,
@@ -58,13 +49,6 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
             topRight: Radius.circular(20),
           ),
           color: Colors.transparent,
-=======
-      title: title,
-      actions: actions,
-      flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          gradient: MyColors.warmGrey,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         ),
       ),
     );

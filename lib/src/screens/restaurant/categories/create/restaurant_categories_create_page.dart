@@ -35,17 +35,12 @@ class _RestaurantCategoriesCreatePageState
         showBackArrow: true,
         title: Text('Nuevas Categorias',
             style: TextStyle(
-<<<<<<< HEAD
               color: MyColors.dark,
-=======
-              color: MyColors.white,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-<<<<<<< HEAD
             const SizedBox(height: TSizes.defaultSpace*2),
             _formCategori(),
             const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -53,14 +48,6 @@ class _RestaurantCategoriesCreatePageState
           ],
         ),
       ),
-=======
-            const SizedBox(height: TSizes.spaceBtwInputFields),
-            _formCategori()
-          ],
-        ),
-      ),
-      bottomNavigationBar: _buttomCreateCategories(),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     );
   }
 
@@ -71,21 +58,13 @@ class _RestaurantCategoriesCreatePageState
   /// Botón para crear categorías
   _buttomCreateCategories() {
     return Container(
-<<<<<<< HEAD
       width: double.infinity,
       height: 150,
-=======
-      height: 130,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 40),
       child: ElevatedButton(
         onPressed: _contr.createCategory,
         style: ElevatedButton.styleFrom(
-<<<<<<< HEAD
           backgroundColor: MyColors.primary,
-=======
-          backgroundColor: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -106,7 +85,6 @@ class _RestaurantCategoriesCreatePageState
         children: [
           TextFormField(
             controller: _contr.nameController,
-<<<<<<< HEAD
             decoration:  InputDecoration(
          
               
@@ -126,18 +104,6 @@ class _RestaurantCategoriesCreatePageState
                       width: 2.0), // Color del borde cuando no está enfocado
                 ),
              
-=======
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: TTexts.categoryName,
-              labelStyle: TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-              suffixIcon: const Icon(Iconsax.note_favorite, color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -147,7 +113,6 @@ class _RestaurantCategoriesCreatePageState
             maxLength: 255,
             maxLines: 5,
             controller: _contr.descriptionController,
-<<<<<<< HEAD
             decoration:  InputDecoration(
               contentPadding: const EdgeInsets.all(20),
               labelText: 'Descripción de la categoría',
@@ -165,19 +130,6 @@ class _RestaurantCategoriesCreatePageState
                       color: Color(0xFFE0E0E0),
                       width: 2.0), // Color del borde cuando no está enfocado
                 ),
-=======
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(20),
-              filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: 'Descripción de la categoría',
-              labelStyle: TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-              suffixIcon: const Icon(Icons.description, color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
         ],

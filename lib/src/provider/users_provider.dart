@@ -12,11 +12,7 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
 class UsersProvider {
-<<<<<<< HEAD
   final String _url = Environment.API_DELIVERY;
-=======
-  final String _url = Enviroment.API_DELIVERY;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   // ignore: prefer_final_fields
   String _api = '/api/users';
 
@@ -61,11 +57,7 @@ class UsersProvider {
       final response = await http.get(url, headers: headers);
 
       if (response.statusCode == 401) {
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
       }
       final data = jsonDecode(response.body);
@@ -91,11 +83,7 @@ class UsersProvider {
       if (res.statusCode == 401) {
         // NO AUTORIZADO
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);
@@ -106,10 +94,7 @@ class UsersProvider {
       }
       return users;
     } catch (e) {
-<<<<<<< HEAD
       // ignore: avoid_print
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       print('Error: $e');
       return [];
     }
@@ -145,11 +130,7 @@ class UsersProvider {
       // Comprobamos si la respuesta es 401 (No autorizado)
       if (response.statusCode == 401) {
         // Si la respuesta es 401, cerramos la sesión del usuario y mostramos un mensaje
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
       }
 

@@ -22,7 +22,7 @@ class TBrandTitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Text(
-      title,
+    '$title',
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,

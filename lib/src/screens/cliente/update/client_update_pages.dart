@@ -31,12 +31,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TAppBar(
-<<<<<<< HEAD
         title: Text(TTexts.updateProfile, style: TextStyle(fontSize: 20)),
-=======
-        title:
-            Text(TTexts.updateProfile, style: TextStyle(color: MyColors.white)),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         showBackArrow: true,
       ),
       body: SingleChildScrollView(
@@ -64,11 +59,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
           shadowColor: MyColors.black,
           padding: const EdgeInsets.symmetric(
               vertical: 15, horizontal: 20), // Ajusta el padding del botón
-<<<<<<< HEAD
           backgroundColor: MyColors.primary,
-=======
-          backgroundColor: MyColors.darkerGrey,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           side: BorderSide.none,
           enableFeedback: true,
           splashFactory: InkRipple.splashFactory,
@@ -96,11 +87,7 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
             ? FileImage(_contr.imageFile!)
             : _contr.user?.image != null
                 ? NetworkImage(_contr.user!.image!)
-<<<<<<< HEAD
                 : Image.asset(TImages.user).image,
-=======
-                :  Image.asset(TImages.user).image,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         radius: 60,
         backgroundColor: Colors.grey[200],
       ),
@@ -109,17 +96,12 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
 
   Widget _form() {
     return Padding(
-<<<<<<< HEAD
       padding: const EdgeInsets.symmetric(horizontal: 50),
-=======
-      padding: const EdgeInsets.all(32),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       child: Column(
         children: [
           TextFormField(
             controller: _contr.nameController,
             keyboardType: TextInputType.name,
-<<<<<<< HEAD
             decoration: const InputDecoration(
               filled: false,
               border: OutlineInputBorder(
@@ -128,24 +110,12 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
               labelText: TTexts.firstName,
               labelStyle: TextStyle(color: Colors.blue),
               prefixIcon: Icon(Iconsax.user_tick),
-=======
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: MyColors.grey.withOpacity(0.3),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: TTexts.firstName,
-              prefixIcon: const Icon(Iconsax.user),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
           TextFormField(
             controller: _contr.lastNameController,
             keyboardType: TextInputType.name,
-<<<<<<< HEAD
             decoration: const InputDecoration(
               filled: false,
               border: OutlineInputBorder(
@@ -154,17 +124,6 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
               labelText: TTexts.lastName,
               labelStyle: TextStyle(color: Colors.blue),
               prefixIcon: Icon(Iconsax.user_tag),
-=======
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: MyColors.grey.withOpacity(0.3),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: TTexts.lastName,
-              prefixIcon: const Icon(Iconsax.user),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -174,7 +133,6 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'[0-9\+]')),
             ],
-<<<<<<< HEAD
             decoration: const InputDecoration(
               filled: false,
               border: OutlineInputBorder(
@@ -183,17 +141,6 @@ class _ClientUpdatePageState extends State<ClientUpdatePage> {
               labelText: TTexts.phone,
               labelStyle: TextStyle(color: Colors.blue),
               prefixIcon: Icon(Iconsax.call),
-=======
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: MyColors.grey.withOpacity(0.3),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: TTexts.phone,
-              prefixIcon: const Icon(Iconsax.call),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
         ],

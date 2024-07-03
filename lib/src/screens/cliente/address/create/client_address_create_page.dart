@@ -28,14 +28,10 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const TAppBar(
-<<<<<<< HEAD
           title: Text(
             'Crear dirección',
             style: TextStyle(fontSize: 20),
           ),
-=======
-          title: Text('Crear dirección', style: TextStyle(color: Colors.white)),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           showBackArrow: true,
         ),
         body: Column(
@@ -52,21 +48,13 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
   Widget _textFieldAddress() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-<<<<<<< HEAD
       child: TextField(
-=======
-      child:  TextField(
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         controller: _con.addressController,
         decoration: const InputDecoration(
             labelText: 'Direccion',
             suffixIcon: Icon(
               Iconsax.global_search,
-<<<<<<< HEAD
               color: MyColors.primary,
-=======
-              color: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )),
       ),
     );
@@ -84,11 +72,7 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
             labelText: 'Punto de referencia',
             suffixIcon: Icon(
               Iconsax.map_1,
-<<<<<<< HEAD
               color: MyColors.primary,
-=======
-              color: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )),
       ),
     );
@@ -97,21 +81,13 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
   Widget _textFieldNeighborhood() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-<<<<<<< HEAD
       child: TextField(
-=======
-      child:  TextField(
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         controller: _con.neighborhoodController,
         decoration: const InputDecoration(
             labelText: 'Distrito',
             suffixIcon: Icon(
               Icons.maps_home_work,
-<<<<<<< HEAD
               color: MyColors.primary,
-=======
-              color: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )),
       ),
     );
@@ -130,7 +106,6 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
 
   Widget _buttonAccept() {
     return Container(
-<<<<<<< HEAD
       alignment: Alignment.bottomCenter,
       margin: const EdgeInsets.only(bottom: 60, left: 30, right: 30, top: 40),
       child: ElevatedButton(
@@ -151,27 +126,12 @@ class _ClientAddressCreatePageState extends State<ClientAddressCreatePage> {
         child: const Text(
           'Crear dirección',
         ),
-=======
-      height: 50,
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
-      child: ElevatedButton(
-        onPressed:_con.createAddress,
-        style: ElevatedButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            backgroundColor: MyColors.primaryColor),
-        child: const Text('CREAR DIRECCION',style: TextStyle(color: Colors.white, fontSize: 20)),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       ),
     );
   }
 
   void refresh() {
-<<<<<<< HEAD
     if (mounted) return;
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     setState(() {});
   }
 }

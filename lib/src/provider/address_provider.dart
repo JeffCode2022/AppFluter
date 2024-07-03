@@ -9,11 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AddressProvider {
-<<<<<<< HEAD
   final String _url = Environment.API_DELIVERY;
-=======
-  final String _url = Enviroment.API_DELIVERY;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   final String _api = '/api/address';
   BuildContext? context;
   User? sessionUser;
@@ -34,11 +30,7 @@ class AddressProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
       final data = json.decode(res.body); // Address
       if (data is Map<String, dynamic> && data.containsKey('data')) {
@@ -55,10 +47,7 @@ class AddressProvider {
     }
       return [];
     } catch (e) {
-<<<<<<< HEAD
       // ignore: avoid_print
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       print('Error: $e');
       return [];
     }
@@ -78,11 +67,7 @@ class AddressProvider {
 
       if (res.statusCode == 401) {
         MySnackBar.warningSnackBar(title: 'Error', message: 'Token expirado');
-<<<<<<< HEAD
         SharedPref().logout(context!, sessionUser!.id);
-=======
-        SharedPref().logout(context!, sessionUser!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       }
 
       final data = json.decode(res.body);

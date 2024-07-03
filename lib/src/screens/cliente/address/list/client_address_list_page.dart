@@ -31,14 +31,10 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
-<<<<<<< HEAD
         title: const Text(
           'Direcciones',
           style: TextStyle(fontSize: 20),
         ),
-=======
-        title: const Text('Direcciones', style: TextStyle(color: Colors.white)),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
         showBackArrow: true,
         actions: [_iconAdd()],
       ),
@@ -78,7 +74,6 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
 
   Widget _buttonAccept() {
     return Container(
-<<<<<<< HEAD
       margin: const EdgeInsets.only(
         bottom: 70,
         left: 60,
@@ -104,19 +99,6 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
         child: const Text(
           'Aceptar',
         ),
-=======
-      height: 50,
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
-      child: ElevatedButton(
-        onPressed: _contr.createOrder,
-        style: ElevatedButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            backgroundColor: MyColors.primaryColor),
-        child: const Text('ACEPTAR',
-            style: TextStyle(fontSize: 20, color: Colors.white)),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
       ),
     );
   }
@@ -144,7 +126,6 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
   }
 
   Widget _radioSelectAddress(Address address, int index) {
-<<<<<<< HEAD
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -205,75 +186,11 @@ class _ClientAddressListPageState extends State<ClientAddressListPage> {
       ),
     );
   }
-=======
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    child: Column(
-      children: [
-        Row(
-          children: [
-            Radio(
-              value: index,
-              groupValue: _contr.radioValue,
-              onChanged: (int? value) {
-                _contr.handleRadioValueChange(value ?? 0);
-              },
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    address.address ?? '',
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
-                  Text(
-                    address.neighborhood ?? '',
-                    style: TextStyle(fontSize: 15, color: Colors.grey[600]),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: TSizes.spaceBtwInputFields),
-        Divider(
-          color: Colors.grey[400],
-        )
-      ],
-    ),
-  );
-}
-
- Widget _textSelectAddress() {
-  return Container(
-    alignment: Alignment.centerLeft,
-    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Reducido
-    child: const Text(
-      'Elige donde recibir tus compras',
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Tamaño reducido
-      overflow: TextOverflow.ellipsis,
-      maxLines: 2,
-    ),
-  );
-}
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
   Widget _iconAdd() {
     return IconButton(
         onPressed: _contr.addAddress,
-<<<<<<< HEAD
         icon: const Icon(Icons.add, color: Colors.black));
-=======
-        icon: const Icon(Icons.add, color: Colors.white));
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   }
 
   void refresh() {

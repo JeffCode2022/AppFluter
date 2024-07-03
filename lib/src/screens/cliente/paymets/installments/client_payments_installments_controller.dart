@@ -82,73 +82,80 @@ class ClientPaymentsInstallmentsControllers  {
     refreshPage!();
   }
 
-  void createPay() async {
-    if (selectedInstallment == null) {
-      MySnackBar.show(context!, 'Debes seleccionar el número de cuotas');
-      return;
-    }
-
-    if (cardToken == null || address == null || user == null) {
-      MySnackBar.show(context!, 'Missing necessary data');
-      return;
-    }
-
-    Order order = Order(
-      idAddress: address!.id,
-      idClient: user!.id,
-      products: selectedProducts
-    );
-
-    progressDialog?.show(max: 100, msg: 'Realizando transacción');
-
-    Response? response = await _mercadoPagoProvider.createPayment(
-        cardId: cardToken!.cardId,
-        transactionAmount: totalPymets,
-        installments: int.parse(selectedInstallment!),
-        paymentMethodId: installments!.paymentMethodId,
-        paymentTypeId: installments!.paymentTypeId,
-        issuerId: installments!.issuer!.id,
-        emailCustomer: user!.email,
-        cardToken: cardToken!.id,
-        identificationType: identificationType,
-        identificationNumber: identificationNumber,
-        order: order
-    );
-    progressDialog?.close();
-
-    if (response != null) {
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-
-      if (response.statusCode == 201) {
-        if (response.body.isNotEmpty) {
-          try {
-            final data = json.decode(response.body);
-            creditCardPayment = MercadoPagoPayment.fromJsonMap(data);
-            Navigator.pushNamedAndRemoveUntil(context!, 'client/payments/status', (route) => false, arguments: creditCardPayment?.toJson());
-          } catch (e) {
-            print('Error decoding JSON: $e');
-            MySnackBar.show(context!, 'Payment successful, but there was an error processing the response');
-          }
-        } else {
-          MySnackBar.show(context!, 'Payment successful, but no further information available');
-          Navigator.pushNamedAndRemoveUntil(context!, 'client/payments/status', (route) => false, arguments: {'status': 'success'});
-        }
-      } else if (response.statusCode == 400) {
-        final data = json.decode(response.body);
-        badRequestProcess(data);
-      } else if (response.statusCode == 401) {
-        final data = json.decode(response.body);
-        badTokenProcess(data['status'], installments!);
-      } else {
-        print('Unexpected status code: ${response.statusCode}');
-        MySnackBar.show(context!, 'Unexpected error occurred. Please try again.');
-      }
-    } else {
-      print('Response is null');
-      MySnackBar.show(context!, 'Failed to connect to the server');
-    }
+ void createPay() async {
+  if (selectedInstallment == null) {
+    MySnackBar.show(context!, 'Debes seleccionar el número de cuotas');
+    return;
   }
+
+  if (cardToken == null || address == null || user == null) {
+    MySnackBar.show(context!, 'Missing necessary data');
+    return;
+  }
+
+  Order order = Order(
+    idAddress: address!.id,
+    idClient: user!.id,
+    products: selectedProducts
+  );
+
+  progressDialog?.show(max: 100, msg: 'Realizando transacción');
+
+  Response? response = await _mercadoPagoProvider.createPayment(
+    cardId: cardToken!.cardId,
+    transactionAmount: totalPymets,
+    installments: int.parse(selectedInstallment!),
+    paymentMethodId: installments!.paymentMethodId,
+    paymentTypeId: installments!.paymentTypeId,
+    issuerId: installments!.issuer!.id,
+    emailCustomer: user!.email,
+    cardToken: cardToken!.id,
+    identificationType: identificationType,
+    identificationNumber: identificationNumber,
+    order: order
+  );
+
+  progressDialog?.close();
+
+  if (response != null) {
+    print('Response status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 201) {
+      if (response.body.isNotEmpty) {
+        try {
+          final data = json.decode(response.body);
+          creditCardPayment = MercadoPagoPayment.fromJsonMap(data);
+          Navigator.pushNamedAndRemoveUntil(context!, 'client/payments/status', (route) => false, arguments: creditCardPayment?.toJson());
+        } catch (e) {
+          print('Error decoding JSON: $e');
+          MySnackBar.show(context!, 'Payment successful, but there was an error processing the response');
+        }
+      } else {
+        MySnackBar.show(context!, 'Payment successful, but no further information available');
+        Navigator.pushNamedAndRemoveUntil(context!, 'client/payments/status', (route) => false, arguments: {'status': 'success'});
+      }
+
+      // Limpiar el carrito
+      selectedProducts.clear();
+      sharedPref.remove('order'); // Asegúrate de que este método esté en tu clase SharedPref
+
+    } else if (response.statusCode == 400) {
+      final data = json.decode(response.body);
+      badRequestProcess(data);
+    } else if (response.statusCode == 401) {
+      final data = json.decode(response.body);
+      badTokenProcess(data['status'], installments!);
+    } else {
+      print('Unexpected status code: ${response.statusCode}');
+      MySnackBar.show(context!, 'Unexpected error occurred. Please try again.');
+    }
+  } else {
+    print('Response is null');
+    MySnackBar.show(context!, 'Failed to connect to the server');
+  }
+}
+
 
   void badRequestProcess(dynamic data) {
     Map<String, String> paymentErrorCodeMap = {

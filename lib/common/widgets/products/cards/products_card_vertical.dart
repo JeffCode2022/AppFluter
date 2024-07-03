@@ -94,7 +94,6 @@ class TProductCardVertical extends StatelessWidget {
                     SizedBox(height: TSizes.spaceBtwItems / 2),
 
                     TBrandTitleWithVerifiedIcon(
-                      title: 'Apple',
                     ),
                   ],
                 )),

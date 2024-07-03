@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapp">
-=======
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -21,15 +17,12 @@
     <uses-permission android:name="android.permission.WRITE_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.WRITE_MEDIA_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
 
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     
 
 
@@ -40,10 +33,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
-<<<<<<< HEAD
         android:enableOnBackInvokedCallback="true"
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
         
         >
@@ -75,11 +65,7 @@
             android:value="2" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-<<<<<<< HEAD
             android:value="AIzaSyBdU65VGFhO-oeBEyMEiY8G7azYr_qkJQU"/>
-=======
-            android:value="AIzaSyASx2JgkceBzgYFPxP0721Ob8kP5-B4KX4"/>
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
     </application>
     <!-- Required to query activities that can process text, see:

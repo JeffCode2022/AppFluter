@@ -37,11 +37,7 @@ class _RestaurantProductsCreatePageState
         showBackArrow: true,
         title: Text('Nuevos Poductos',
             style: TextStyle(
-<<<<<<< HEAD
               color: MyColors.dark,
-=======
-              color: MyColors.white,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             )),
       ),
       body: SingleChildScrollView(
@@ -78,7 +74,6 @@ class _RestaurantProductsCreatePageState
           TextFormField(
             controller: _contr.nameController,
             decoration: InputDecoration(
-<<<<<<< HEAD
               labelText: 'Nombre del producto',
               prefixIcon: const Icon(Iconsax.text_block, color: MyColors.dark),
               labelStyle: TextStyle(color: MyColors.primary.withOpacity(0.7)),
@@ -94,19 +89,6 @@ class _RestaurantProductsCreatePageState
                     color: Color(0xFFE0E0E0),
                     width: 2.0), // Color del borde cuando no está enfocado
               ),
-=======
-              filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-              ),
-              labelText: 'Nombre del producto',
-              labelStyle:
-                  TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-              prefixIcon: const Icon(Iconsax.note_favorite,
-                  color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -118,7 +100,6 @@ class _RestaurantProductsCreatePageState
             controller: _contr.descriptionController,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(20),
-<<<<<<< HEAD
               labelText: 'Descripción de los productos',
               prefixIcon: const Icon(Iconsax.archive, color: MyColors.dark),
               labelStyle: TextStyle(color: MyColors.primary.withOpacity(0.7)),
@@ -134,19 +115,6 @@ class _RestaurantProductsCreatePageState
                     color: Color(0xFFE0E0E0),
                     width: 2.0), // Color del borde cuando no está enfocado
               ),
-=======
-              filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-              ),
-              labelText: 'Descripción de los productos',
-              labelStyle:
-                  TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-              prefixIcon:
-                  const Icon(Iconsax.archive, color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -156,7 +124,6 @@ class _RestaurantProductsCreatePageState
             keyboardType: TextInputType.number,
             controller: _contr.priceController,
             decoration: InputDecoration(
-<<<<<<< HEAD
               labelText: 'Precio del producto',
               labelStyle: TextStyle(color: MyColors.primary.withOpacity(0.7)),
               prefixIcon: const Icon(Icons.monetization_on,
@@ -173,19 +140,6 @@ class _RestaurantProductsCreatePageState
                     color: Color(0xFFE0E0E0),
                     width: 2.0), // Color del borde cuando no está enfocado
               ),
-=======
-              filled: true,
-              fillColor: MyColors.lightRed.withOpacity(0.1),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-              ),
-              labelText: 'Precio del producto',
-              labelStyle:
-                  TextStyle(color: MyColors.primaryColor.withOpacity(0.7)),
-              prefixIcon: const Icon(Icons.monetization_on,
-                  color: MyColors.primaryColor),
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
             ),
           ),
         ],
@@ -201,11 +155,7 @@ class _RestaurantProductsCreatePageState
       child: ElevatedButton(
         onPressed: _contr.createProduct,
         style: ElevatedButton.styleFrom(
-<<<<<<< HEAD
           backgroundColor: MyColors.primary,
-=======
-          backgroundColor: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -264,11 +214,7 @@ class _RestaurantProductsCreatePageState
                 children: [
                   Icon(
                     Iconsax.global_search,
-<<<<<<< HEAD
                     color: MyColors.dark,
-=======
-                    color: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
                   ),
                   SizedBox(width: 15),
                   Text(
@@ -288,11 +234,7 @@ class _RestaurantProductsCreatePageState
                     alignment: Alignment.centerRight,
                     child: const Icon(
                       Icons.arrow_drop_down_circle,
-<<<<<<< HEAD
                       color: MyColors.primary,
-=======
-                      color: MyColors.primaryColor,
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
                     ),
                   ),
                   elevation: 3,

@@ -12,14 +12,14 @@ class TBrandTitleWithVerifiedIcon extends StatelessWidget {
     super.key, 
     this.textColor, 
     this.maxLines = 1, 
-    required this.title, 
+     
     this.iconColor = MyColors.primary, 
     this.textAlign = TextAlign.center, 
     this.brandTextSize = TextSizes.small,
   });
 
 
-  final String title;
+  
   final int maxLines;
   final Color? textColor, iconColor; 
   final TextAlign? textAlign;
@@ -33,7 +33,7 @@ class TBrandTitleWithVerifiedIcon extends StatelessWidget {
       children: [
         Flexible(
           child: TBrandTitleText(
-            title: title,
+            title:  'Crustaceo Chorrillano',
             color: textColor,
             maxLines: maxLines,
             textAlign: textAlign,

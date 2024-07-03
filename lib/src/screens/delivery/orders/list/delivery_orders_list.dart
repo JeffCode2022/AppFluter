@@ -13,7 +13,7 @@ class DeliveryOrderListPage extends StatefulWidget {
 }
 
 class _DeliveryOrderListPageState extends State<DeliveryOrderListPage> {
-  final DeliveryOrdersListController _contr = DeliveryOrdersListController();
+  final DeliveryOrdersListControllers _contr = DeliveryOrdersListControllers();
 
   @override
   void initState() {

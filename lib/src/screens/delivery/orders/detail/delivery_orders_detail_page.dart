@@ -111,7 +111,9 @@ class _DeliveryOrderDetailPageState extends State<DeliveryOrderDetailPage> {
   }
 
   Widget _buttonNext() {
-    return Container(
+  return Visibility(
+    visible: _con.order?.status != 'ENTREGADO',
+    child: Container(
       margin: const EdgeInsets.only(left: 40, right: 30, top: 5, bottom: 20),
       child: ElevatedButton(
         onPressed: _con.updateOrder,
@@ -139,11 +141,11 @@ class _DeliveryOrderDetailPageState extends State<DeliveryOrderDetailPage> {
                 ),
               ),
             ),
-             Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Container(
                 height: 50,
-                margin: const EdgeInsets.only(left: 60,),
+                margin: const EdgeInsets.only(left: 60),
                 child: Image.asset(
                   TImages.imgReparto,
                   width: 40,
@@ -154,8 +156,10 @@ class _DeliveryOrderDetailPageState extends State<DeliveryOrderDetailPage> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
 
 
@@ -250,6 +254,7 @@ Widget _textData(String title, String content, {TextStyle? style, required IconD
   }
 
   void refresh() {
+    if (!mounted) return;
     setState(() {});
   }
 }

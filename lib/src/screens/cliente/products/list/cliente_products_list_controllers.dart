@@ -1,16 +1,13 @@
+import 'dart:async';
+
 import 'package:delivery_autonoma/src/models/category.dart';
-<<<<<<< HEAD
 import 'package:delivery_autonoma/src/models/order.dart';
 import 'package:delivery_autonoma/src/models/product.dart';
 import 'package:delivery_autonoma/src/models/user.dart';
 import 'package:delivery_autonoma/src/provider/categories_provider.dart';
 import 'package:delivery_autonoma/src/provider/orders_provider.dart';
-=======
-import 'package:delivery_autonoma/src/models/product.dart';
-import 'package:delivery_autonoma/src/models/user.dart';
-import 'package:delivery_autonoma/src/provider/categories_provider.dart';
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 import 'package:delivery_autonoma/src/provider/products_provider.dart';
+import 'package:delivery_autonoma/utils/constants/my_snackbar.dart';
 import 'package:delivery_autonoma/utils/constants/shared_pref.dart';
 import 'package:flutter/material.dart';
 
@@ -20,12 +17,17 @@ class ClientProductsListControllers {
   BuildContext? context;
   final SharedPref _sharedPref = SharedPref();
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-  Function? refresh;
 
+  Function? refresh;
+  Product? product;
+  int counter = 1;
   User? user;
+
+   Timer? searchOnStoppedTyping;
+
+  String productName = '';
   final CategoriesProvider _categoriesProvider = CategoriesProvider();
   final ProductsProvider _productsProvider = ProductsProvider();
-<<<<<<< HEAD
   final OrdersProvider _ordersProvider = OrdersProvider();
   List<Category> categories = [];
   bool isUpdate = false;
@@ -33,91 +35,143 @@ class ClientProductsListControllers {
   List<Product> selectedProducts = [];
 
   Order order = Order();
-=======
-  List<Category> categories = [];
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
   Future<void> init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-<<<<<<< HEAD
 
     user = User.fromJson(await _sharedPref.read('user'));
-    selectedProducts = Product.fromJsonList(await _sharedPref.read('order')).toList();
-=======
-    user = User.fromJson(await _sharedPref.read('user'));
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
-    // ignore: use_build_context_synchronously
+    if (user == null) {
+      // Manejar el caso en que user es null
+      print('User is null. Cannot proceed.');
+      return;
+    }
+
+    selectedProducts =
+        Product.fromJsonList(await _sharedPref.read('order')).toList();
+    for (var p in selectedProducts) {
+      print('Producto seleccionado: ${p.toJson()}');
+    }
+
     _productsProvider.init(context, user!);
-    // ignore: use_build_context_synchronously
     _categoriesProvider.init(context, user!);
-<<<<<<< HEAD
-
-    // ignore: use_build_context_synchronously
     _ordersProvider.init(context, user!);
 
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
     getCategories();
     refresh();
   }
 
+   void onChangeText(String text) {
+    const duration = Duration(milliseconds:800); // set the duration that you want call search() after that.
+    if (searchOnStoppedTyping != null) {
+      searchOnStoppedTyping!.cancel();
+      refresh!();
+    }
+
+    searchOnStoppedTyping =  Timer(duration, () {
+      productName = text;
+      refresh!();
+      // getProducts(idCategory, text)
+      print('TEXTO COMPLETO $text');
+    });
+  }
+
   Future<List<Product>> getProducts(String idCategory) async {
+
+    if (productName.isNotEmpty) {
+      return await _productsProvider.getByCategoryAndProductName(idCategory, productName);
+    }
+
     return await _productsProvider.getByCategory(idCategory);
   }
 
   void getCategories() async {
+
     categories = await _categoriesProvider.getAll();
     refresh!();
   }
 
-<<<<<<< HEAD
   void openBottomSheet(Product product) async {
-    final result = await showModalBottomSheet<bool>(
-      isScrollControlled: true,
-      context: context!,
-      builder: (context) => ClientProductsDetailPage(product: product),
-    );
+    if (context != null) {
+      final result = await showModalBottomSheet<bool>(
+        isScrollControlled: true,
+        context: context!,
+        builder: (context) => ClientProductsDetailPage(product: product),
+      );
 
-    // Ensure result is not null and is a bool type
-    isUpdate = result ?? false;
+      isUpdate = result ?? false;
 
-    if (isUpdate) {
-      refresh!();
+      if (isUpdate) {
+        refresh!();
+      }
+    } else {
+      print('Context is null. Cannot open bottom sheet.');
     }
   }
 
-  void logout() {
-    _sharedPref.logout(context!, user!.id);
-  }
-  void goToMyOrders() {
-    Navigator.pushNamed(context!, 'client/orders/list');
-=======
-  void openBottomSheet(Product product) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        context: context!,
-        builder: (context) => ClientProductsDetailPage(product: product));
+void addToBag(Product product) {
+  int index = selectedProducts.indexWhere((p) => p.id == product.id);
+
+  if (index == -1) {
+    // PRODUCTOS SELECCIONADOS NO EXISTE ESE PRODUCTO
+    product.quantity ??= 1;  // Asignar 1 si product.quantity es null
+
+    selectedProducts.add(product);
+  } else {
+    selectedProducts[index].quantity = counter;
   }
 
+  _sharedPref.save('order', selectedProducts);
+  MySnackBar.successSnackBar(
+      title: 'Producto agregado', message: 'Producto agregado al carrito');
+  print('Producto agregado al carrito: ${product.toJson()}');
+  print('Productos seleccionados: ${selectedProducts.length}');
+  refresh!();
+  Navigator.of(context!);
+}
+
+
   void logout() {
-    _sharedPref.logout(context!, user!.id!);
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
+    if (context != null && user != null) {
+      _sharedPref.logout(context!, user!.id);
+    } else {
+      print('Context or user is null. Cannot log out.');
+    }
+  }
+
+  void goToMyOrders() {
+    if (context != null) {
+      Navigator.pushNamed(context!, 'client/orders/list');
+    } else {
+      print('Context is null. Cannot navigate.');
+    }
   }
 
   void openDrawer() {
-    key.currentState!.openDrawer();
+    key.currentState?.openDrawer();
   }
 
   void goToUpdate() {
-    Navigator.pushNamed(context!, 'client/update');
+    if (context != null) {
+      Navigator.pushNamed(context!, 'client/update');
+    } else {
+      print('Context is null. Cannot navigate.');
+    }
   }
 
   void goToOrderBagg() {
-    Navigator.pushNamed(context!, 'client/orders/create');
+    if (context != null) {
+      Navigator.pushNamed(context!, 'client/orders/create');
+    } else {
+      print('Context is null. Cannot navigate.');
+    }
   }
 
   void goToRoles() {
-    Navigator.pushNamedAndRemoveUntil(context!, 'roles', (route) => false);
+    if (context != null) {
+      Navigator.pushNamedAndRemoveUntil(context!, 'roles', (route) => false);
+    } else {
+      print('Context is null. Cannot navigate.');
+    }
   }
 }

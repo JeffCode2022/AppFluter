@@ -8,10 +8,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   firebase_storage
   geolocator_windows
   permission_handler_windows
-<<<<<<< HEAD
   rive_common
-=======
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
   url_launcher_windows
 )
 

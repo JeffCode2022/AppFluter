@@ -21,11 +21,7 @@ class ClientOrdersCreateController {
     this.context = context;
     this.refresh = refresh;
 
-<<<<<<< HEAD
     selectedProducts =Product.fromJsonList(await _sharedPref.read('order')).toList();
-=======
-    selectedProducts =Product.fromJsonList(await _sharedPref.read('order')).toList;
->>>>>>> 661796690c90e1578bea351876b3a6728de9d4db
 
     getTotal();
     refresh();
